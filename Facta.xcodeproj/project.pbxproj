@@ -1,0 +1,592 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		989ECF172E7F466B00F67979 /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF62E7F466B00F67979 /* ReadyView.swift */; };
+		989ECF182E7F466B00F67979 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFF2E7F466B00F67979 /* SettingsView.swift */; };
+		989ECF192E7F466B00F67979 /* QuizHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF032E7F466B00F67979 /* QuizHistoryView.swift */; };
+		989ECF1A2E7F466B00F67979 /* BadgesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFC2E7F466B00F67979 /* BadgesGridView.swift */; };
+		989ECF1B2E7F466B00F67979 /* QuizFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF012E7F466B00F67979 /* QuizFeature.swift */; };
+		989ECF1C2E7F466B00F67979 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFA2E7F466B00F67979 /* OnboardingView.swift */; };
+		989ECF1D2E7F466B00F67979 /* FactaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEE72E7F466B00F67979 /* FactaApp.swift */; };
+		989ECF1E2E7F466B00F67979 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEE62E7F466B00F67979 /* AppView.swift */; };
+		989ECF1F2E7F466B00F67979 /* FavoriteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEEB2E7F466B00F67979 /* FavoriteCardView.swift */; };
+		989ECF202E7F466B00F67979 /* IntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF42E7F466B00F67979 /* IntroView.swift */; };
+		989ECF212E7F466B00F67979 /* NotificationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF102E7F466B00F67979 /* NotificationClient.swift */; };
+		989ECF222E7F466B00F67979 /* FactsQuizIntroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF32E7F466B00F67979 /* FactsQuizIntroView.swift */; };
+		989ECF232E7F466B00F67979 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFE2E7F466B00F67979 /* ProfileView.swift */; };
+		989ECF242E7F466B00F67979 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF12E7F466B00F67979 /* HomeView.swift */; };
+		989ECF252E7F466B00F67979 /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF0B2E7F466B00F67979 /* Quiz.swift */; };
+		989ECF262E7F466B00F67979 /* FavoritesFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEEC2E7F466B00F67979 /* FavoritesFeature.swift */; };
+		989ECF282E7F466B00F67979 /* QuizOverviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF042E7F466B00F67979 /* QuizOverviewView.swift */; };
+		989ECF292E7F466B00F67979 /* Fact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF0A2E7F466B00F67979 /* Fact.swift */; };
+		989ECF2A2E7F466B00F67979 /* FactCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEEF2E7F466B00F67979 /* FactCardView.swift */; };
+		989ECF2B2E7F466B00F67979 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEE52E7F466B00F67979 /* AppState.swift */; };
+		989ECF2C2E7F466B00F67979 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEED2E7F466B00F67979 /* FavoritesView.swift */; };
+		989ECF2D2E7F466B00F67979 /* AppAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEE32E7F466B00F67979 /* AppAction.swift */; };
+		989ECF2E2E7F466B00F67979 /* NotificationSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF52E7F466B00F67979 /* NotificationSettingsView.swift */; };
+		989ECF2F2E7F466B00F67979 /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEE42E7F466B00F67979 /* AppReducer.swift */; };
+		989ECF302E7F466B00F67979 /* LocalDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF0F2E7F466B00F67979 /* LocalDataClient.swift */; };
+		989ECF312E7F466B00F67979 /* HomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF02E7F466B00F67979 /* HomeFeature.swift */; };
+		989ECF322E7F466B00F67979 /* PersistenceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF112E7F466B00F67979 /* PersistenceClient.swift */; };
+		989ECF332E7F466B00F67979 /* QuizGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF022E7F466B00F67979 /* QuizGameView.swift */; };
+		989ECF342E7F466B00F67979 /* ProfileFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFD2E7F466B00F67979 /* ProfileFeature.swift */; };
+		989ECF352E7F466B00F67979 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF092E7F466B00F67979 /* Badge.swift */; };
+		989ECF362E7F466B00F67979 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF92E7F466B00F67979 /* OnboardingFeature.swift */; };
+		989ECF372E7F466B00F67979 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEE92E7F466B00F67979 /* DesignTokens.swift */; };
+		989ECF382E7F466B00F67979 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF0C2E7F466B00F67979 /* User.swift */; };
+		989ECF392E7F466B00F67979 /* SwipeHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF72E7F466B00F67979 /* SwipeHintView.swift */; };
+		989ECF3A2E7F466B00F67979 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF062E7F466B00F67979 /* QuizView.swift */; };
+		989ECF3B2E7F466B00F67979 /* QuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF052E7F466B00F67979 /* QuizResultView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		989ECEE32E7F466B00F67979 /* AppAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAction.swift; sourceTree = "<group>"; };
+		989ECEE42E7F466B00F67979 /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
+		989ECEE52E7F466B00F67979 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		989ECEE62E7F466B00F67979 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		989ECEE72E7F466B00F67979 /* FactaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactaApp.swift; sourceTree = "<group>"; };
+		989ECEE92E7F466B00F67979 /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
+		989ECEEB2E7F466B00F67979 /* FavoriteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCardView.swift; sourceTree = "<group>"; };
+		989ECEEC2E7F466B00F67979 /* FavoritesFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesFeature.swift; sourceTree = "<group>"; };
+		989ECEED2E7F466B00F67979 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+		989ECEEF2E7F466B00F67979 /* FactCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactCardView.swift; sourceTree = "<group>"; };
+		989ECEF02E7F466B00F67979 /* HomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeature.swift; sourceTree = "<group>"; };
+		989ECEF12E7F466B00F67979 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		989ECEF32E7F466B00F67979 /* FactsQuizIntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsQuizIntroView.swift; sourceTree = "<group>"; };
+		989ECEF42E7F466B00F67979 /* IntroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroView.swift; sourceTree = "<group>"; };
+		989ECEF52E7F466B00F67979 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
+		989ECEF62E7F466B00F67979 /* ReadyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyView.swift; sourceTree = "<group>"; };
+		989ECEF72E7F466B00F67979 /* SwipeHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeHintView.swift; sourceTree = "<group>"; };
+		989ECEF92E7F466B00F67979 /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
+		989ECEFA2E7F466B00F67979 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		989ECEFC2E7F466B00F67979 /* BadgesGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesGridView.swift; sourceTree = "<group>"; };
+		989ECEFD2E7F466B00F67979 /* ProfileFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeature.swift; sourceTree = "<group>"; };
+		989ECEFE2E7F466B00F67979 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		989ECEFF2E7F466B00F67979 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		989ECF012E7F466B00F67979 /* QuizFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFeature.swift; sourceTree = "<group>"; };
+		989ECF022E7F466B00F67979 /* QuizGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameView.swift; sourceTree = "<group>"; };
+		989ECF032E7F466B00F67979 /* QuizHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHistoryView.swift; sourceTree = "<group>"; };
+		989ECF042E7F466B00F67979 /* QuizOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOverviewView.swift; sourceTree = "<group>"; };
+		989ECF052E7F466B00F67979 /* QuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultView.swift; sourceTree = "<group>"; };
+		989ECF062E7F466B00F67979 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		989ECF092E7F466B00F67979 /* Badge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Badge.swift; sourceTree = "<group>"; };
+		989ECF0A2E7F466B00F67979 /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
+		989ECF0B2E7F466B00F67979 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		989ECF0C2E7F466B00F67979 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		989ECF0F2E7F466B00F67979 /* LocalDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataClient.swift; sourceTree = "<group>"; };
+		989ECF102E7F466B00F67979 /* NotificationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationClient.swift; sourceTree = "<group>"; };
+		989ECF112E7F466B00F67979 /* PersistenceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceClient.swift; sourceTree = "<group>"; };
+		989ECF132E7F466B00F67979 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A1234567890123456789012C /* Facta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A1234567890123456789012J /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		989ECEE82E7F466B00F67979 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				989ECEE32E7F466B00F67979 /* AppAction.swift */,
+				989ECEE42E7F466B00F67979 /* AppReducer.swift */,
+				989ECEE52E7F466B00F67979 /* AppState.swift */,
+				989ECEE62E7F466B00F67979 /* AppView.swift */,
+				989ECEE72E7F466B00F67979 /* FactaApp.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		989ECEEA2E7F466B00F67979 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				989ECEE92E7F466B00F67979 /* DesignTokens.swift */,
+			);
+			path = Design;
+			sourceTree = "<group>";
+		};
+		989ECEEE2E7F466B00F67979 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				989ECEEB2E7F466B00F67979 /* FavoriteCardView.swift */,
+				989ECEEC2E7F466B00F67979 /* FavoritesFeature.swift */,
+				989ECEED2E7F466B00F67979 /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		989ECEF22E7F466B00F67979 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				989ECEEF2E7F466B00F67979 /* FactCardView.swift */,
+				989ECEF02E7F466B00F67979 /* HomeFeature.swift */,
+				989ECEF12E7F466B00F67979 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		989ECEF82E7F466B00F67979 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				989ECEF32E7F466B00F67979 /* FactsQuizIntroView.swift */,
+				989ECEF42E7F466B00F67979 /* IntroView.swift */,
+				989ECEF52E7F466B00F67979 /* NotificationSettingsView.swift */,
+				989ECEF62E7F466B00F67979 /* ReadyView.swift */,
+				989ECEF72E7F466B00F67979 /* SwipeHintView.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		989ECEFB2E7F466B00F67979 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				989ECEF82E7F466B00F67979 /* Steps */,
+				989ECEF92E7F466B00F67979 /* OnboardingFeature.swift */,
+				989ECEFA2E7F466B00F67979 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		989ECF002E7F466B00F67979 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				989ECEFC2E7F466B00F67979 /* BadgesGridView.swift */,
+				989ECEFD2E7F466B00F67979 /* ProfileFeature.swift */,
+				989ECEFE2E7F466B00F67979 /* ProfileView.swift */,
+				989ECEFF2E7F466B00F67979 /* SettingsView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		989ECF072E7F466B00F67979 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				989ECF012E7F466B00F67979 /* QuizFeature.swift */,
+				989ECF022E7F466B00F67979 /* QuizGameView.swift */,
+				989ECF032E7F466B00F67979 /* QuizHistoryView.swift */,
+				989ECF042E7F466B00F67979 /* QuizOverviewView.swift */,
+				989ECF052E7F466B00F67979 /* QuizResultView.swift */,
+				989ECF062E7F466B00F67979 /* QuizView.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		989ECF082E7F466B00F67979 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				989ECEEE2E7F466B00F67979 /* Favorites */,
+				989ECEF22E7F466B00F67979 /* Home */,
+				989ECEFB2E7F466B00F67979 /* Onboarding */,
+				989ECF002E7F466B00F67979 /* Profile */,
+				989ECF072E7F466B00F67979 /* Quiz */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		989ECF0D2E7F466B00F67979 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				989ECF092E7F466B00F67979 /* Badge.swift */,
+				989ECF0A2E7F466B00F67979 /* Fact.swift */,
+				989ECF0B2E7F466B00F67979 /* Quiz.swift */,
+				989ECF0C2E7F466B00F67979 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		989ECF0E2E7F466B00F67979 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		989ECF122E7F466B00F67979 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				989ECF0F2E7F466B00F67979 /* LocalDataClient.swift */,
+				989ECF102E7F466B00F67979 /* NotificationClient.swift */,
+				989ECF112E7F466B00F67979 /* PersistenceClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		989ECF142E7F466B00F67979 /* Facta */ = {
+			isa = PBXGroup;
+			children = (
+				989ECEE82E7F466B00F67979 /* App */,
+				989ECEEA2E7F466B00F67979 /* Design */,
+				989ECF082E7F466B00F67979 /* Features */,
+				989ECF0D2E7F466B00F67979 /* Models */,
+				989ECF0E2E7F466B00F67979 /* Preview Content */,
+				989ECF122E7F466B00F67979 /* Services */,
+				989ECF132E7F466B00F67979 /* Info.plist */,
+			);
+			path = Facta;
+			sourceTree = "<group>";
+		};
+		A1234567890123456789012E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456789012C /* Facta.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A1234567890123456789012F = {
+			isa = PBXGroup;
+			children = (
+				989ECF142E7F466B00F67979 /* Facta */,
+				A1234567890123456789012E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A1234567890123456789012G /* Facta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1234567890123456789012H /* Build configuration list for PBXNativeTarget "Facta" */;
+			buildPhases = (
+				A1234567890123456789012I /* Sources */,
+				A1234567890123456789012J /* Frameworks */,
+				A1234567890123456789012K /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Facta;
+			packageProductDependencies = (
+				A1234567890123456789012S /* ComposableArchitecture */,
+			);
+			productName = Facta;
+			productReference = A1234567890123456789012C /* Facta.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A1234567890123456789012L /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					A1234567890123456789012G = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = A1234567890123456789012M /* Build configuration list for PBXProject "Facta" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A1234567890123456789012F;
+			packageReferences = (
+				A1234567890123456789012R /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
+			productRefGroup = A1234567890123456789012E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A1234567890123456789012G /* Facta */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A1234567890123456789012K /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A1234567890123456789012I /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				989ECF172E7F466B00F67979 /* ReadyView.swift in Sources */,
+				989ECF182E7F466B00F67979 /* SettingsView.swift in Sources */,
+				989ECF192E7F466B00F67979 /* QuizHistoryView.swift in Sources */,
+				989ECF1A2E7F466B00F67979 /* BadgesGridView.swift in Sources */,
+				989ECF1B2E7F466B00F67979 /* QuizFeature.swift in Sources */,
+				989ECF1C2E7F466B00F67979 /* OnboardingView.swift in Sources */,
+				989ECF1D2E7F466B00F67979 /* FactaApp.swift in Sources */,
+				989ECF1E2E7F466B00F67979 /* AppView.swift in Sources */,
+				989ECF1F2E7F466B00F67979 /* FavoriteCardView.swift in Sources */,
+				989ECF202E7F466B00F67979 /* IntroView.swift in Sources */,
+				989ECF212E7F466B00F67979 /* NotificationClient.swift in Sources */,
+				989ECF222E7F466B00F67979 /* FactsQuizIntroView.swift in Sources */,
+				989ECF232E7F466B00F67979 /* ProfileView.swift in Sources */,
+				989ECF242E7F466B00F67979 /* HomeView.swift in Sources */,
+				989ECF252E7F466B00F67979 /* Quiz.swift in Sources */,
+				989ECF262E7F466B00F67979 /* FavoritesFeature.swift in Sources */,
+				989ECF282E7F466B00F67979 /* QuizOverviewView.swift in Sources */,
+				989ECF292E7F466B00F67979 /* Fact.swift in Sources */,
+				989ECF2A2E7F466B00F67979 /* FactCardView.swift in Sources */,
+				989ECF2B2E7F466B00F67979 /* AppState.swift in Sources */,
+				989ECF2C2E7F466B00F67979 /* FavoritesView.swift in Sources */,
+				989ECF2D2E7F466B00F67979 /* AppAction.swift in Sources */,
+				989ECF2E2E7F466B00F67979 /* NotificationSettingsView.swift in Sources */,
+				989ECF2F2E7F466B00F67979 /* AppReducer.swift in Sources */,
+				989ECF302E7F466B00F67979 /* LocalDataClient.swift in Sources */,
+				989ECF312E7F466B00F67979 /* HomeFeature.swift in Sources */,
+				989ECF322E7F466B00F67979 /* PersistenceClient.swift in Sources */,
+				989ECF332E7F466B00F67979 /* QuizGameView.swift in Sources */,
+				989ECF342E7F466B00F67979 /* ProfileFeature.swift in Sources */,
+				989ECF352E7F466B00F67979 /* Badge.swift in Sources */,
+				989ECF362E7F466B00F67979 /* OnboardingFeature.swift in Sources */,
+				989ECF372E7F466B00F67979 /* DesignTokens.swift in Sources */,
+				989ECF382E7F466B00F67979 /* User.swift in Sources */,
+				989ECF392E7F466B00F67979 /* SwipeHintView.swift in Sources */,
+				989ECF3A2E7F466B00F67979 /* QuizView.swift in Sources */,
+				989ECF3B2E7F466B00F67979 /* QuizResultView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A1234567890123456789012N /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Facta/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Facta/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facta.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A1234567890123456789012O /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Facta/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Facta/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.facta.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		A1234567890123456789012P /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=100 -Xfrontend -warn-long-expression-type-checking=100";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A1234567890123456789012Q /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "-Xfrontend -warn-long-function-bodies=100 -Xfrontend -warn-long-expression-type-checking=100";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A1234567890123456789012H /* Build configuration list for PBXNativeTarget "Facta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1234567890123456789012N /* Debug */,
+				A1234567890123456789012O /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1234567890123456789012M /* Build configuration list for PBXProject "Facta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1234567890123456789012P /* Debug */,
+				A1234567890123456789012Q /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A1234567890123456789012R /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.58.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A1234567890123456789012S /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A1234567890123456789012R /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = A1234567890123456789012L /* Project object */;
+}
