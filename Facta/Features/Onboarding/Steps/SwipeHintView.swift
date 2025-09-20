@@ -33,7 +33,10 @@ struct SwipeHintView: View {
                         tags: [FactTag(emoji: "🦩", label: "Djur")],
                         readTime: 20,
                         isPremium: false
-                    )
+                    ),
+                    isSaved: false,
+                    onSave: {},
+                    onShare: {}
                 )
                 .frame(width: 300, height: 200)
                 .offset(x: cardOffset)
@@ -57,7 +60,11 @@ struct SwipeHintView: View {
             Spacer()
             
             Button("Nästa") {
-                store.send(.nextStep)
+                Task {
+                    withAnimation(.spring()) {
+                        store.send(.nextStep)
+                    }
+                }
             }
             .buttonStyle(PrimaryButtonStyle())
             .padding(.horizontal, UI.Padding.large)

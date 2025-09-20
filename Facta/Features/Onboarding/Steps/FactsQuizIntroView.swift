@@ -36,7 +36,11 @@ struct FactsQuizIntroView: View {
             Spacer()
             
             Button("Nästa") {
-                store.send(.nextStep)
+                Task {
+                    withAnimation(.spring()) {
+                        store.send(.nextStep)
+                    }
+                }
             }
             .buttonStyle(PrimaryButtonStyle())
             .padding(.horizontal, UI.Padding.large)
@@ -59,7 +63,7 @@ struct FeatureIconView: View {
             
             VStack(alignment: .leading, spacing: UI.Spacing.small) {
                 Text(title)
-                    .font(.headline)
+                    .font(Typography.headline)
                     .foregroundColor(.primary)
                 
                 Text(description)

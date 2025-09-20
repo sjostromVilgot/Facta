@@ -14,24 +14,25 @@ struct ProfileView: View {
                     VStack(spacing: UI.Spacing.medium) {
                         // Avatar
                         Circle()
-                            .fill(Color.primary.opacity(0.1))
+                            .fill(LinearGradient(colors: [.primary, .secondary], startPoint: .topLeading, endPoint: .bottomTrailing))
                             .frame(width: 80, height: 80)
                             .overlay(
                                 Text("G")
-                                    .font(.largeTitle)
-                                    .foregroundColor(.primary)
+                                    .font(.title)
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.white)
                             )
                         
                         // Name and Streak
                         VStack(spacing: UI.Spacing.small) {
                             Text("Gäst")
-                                .font(.title2)
+                                .font(Typography.title2)
                                 .foregroundColor(.primary)
                             
                             HStack {
                                 Text("🔥")
                                 Text("\(viewStore.stats.streakDays) dagars streak")
-                                    .font(.headline)
+                                    .font(Typography.headline)
                                     .foregroundColor(.primary)
                             }
                         }
@@ -42,13 +43,13 @@ struct ProfileView: View {
                     VStack(alignment: .leading, spacing: UI.Spacing.small) {
                         HStack {
                             Text("XP")
-                                .font(.headline)
+                                .font(Typography.headline)
                                 .foregroundColor(.primary)
                             
                             Spacer()
                             
                             Text("\(calculateXP(from: viewStore.stats))")
-                                .font(.headline)
+                                .font(Typography.headline)
                                 .foregroundColor(.primary)
                         }
                         
@@ -95,13 +96,13 @@ struct ProfileView: View {
                     VStack(alignment: .leading, spacing: UI.Spacing.medium) {
                         HStack {
                             Text("Badges")
-                                .font(.headline)
+                                .font(Typography.headline)
                                 .foregroundColor(.primary)
                             
                             Spacer()
                             
                             Text("\(viewStore.stats.badgesUnlocked)/\(viewStore.badges.count)")
-                                .font(.caption)
+                                .font(Typography.caption)
                                 .foregroundColor(.secondary)
                         }
                         
@@ -129,19 +130,35 @@ struct ProfileView: View {
                     }
                     .padding(.horizontal)
                     
-                    // Settings Button
-                    Button(action: {
-                        showingSettings = true
-                    }) {
-                        HStack {
-                            Image(systemName: "gearshape.fill")
-                            Text("Inställningar")
+                    // Settings and About Buttons
+                    VStack(spacing: UI.Spacing.medium) {
+                        Button(action: {
+                            showingSettings = true
+                        }) {
+                            HStack {
+                                Image(systemName: "gearshape.fill")
+                                Text("Inställningar")
+                            }
+                            .foregroundColor(.primary)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.muted)
+                            .cornerRadius(UI.corner)
                         }
-                        .foregroundColor(.primary)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.muted)
-                        .cornerRadius(UI.corner)
+                        
+                        Button(action: {
+                            showingAbout = true
+                        }) {
+                            HStack {
+                                Image(systemName: "info.circle.fill")
+                                Text("Om Facta")
+                            }
+                            .foregroundColor(.primary)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(Color.muted)
+                            .cornerRadius(UI.corner)
+                        }
                     }
                     .padding(.horizontal)
                 }
@@ -169,17 +186,48 @@ struct StatCardView: View {
     let value: String
     let icon: String
     
+    private var iconColor: Color {
+        switch title {
+        case "Streak":
+            return .orange
+        case "Fakta lästa":
+            return .secondary
+        case "Quiz-snitt":
+            return .accent
+        case "Badges":
+            return .green
+        default:
+            return .primary
+        }
+    }
+    
+    private var systemIcon: String {
+        switch title {
+        case "Streak":
+            return "flame.fill"
+        case "Fakta lästa":
+            return "book.fill"
+        case "Quiz-snitt":
+            return "brain.head.profile"
+        case "Badges":
+            return "trophy.fill"
+        default:
+            return "star.fill"
+        }
+    }
+    
     var body: some View {
         VStack(spacing: UI.Spacing.small) {
-            Text(icon)
+            Image(systemName: systemIcon)
                 .font(.title2)
+                .foregroundColor(iconColor)
             
             Text(value)
-                .font(.headline)
+                .font(Typography.headline)
                 .foregroundColor(.primary)
             
             Text(title)
-                .font(.caption)
+                .font(Typography.caption)
                 .foregroundColor(.secondary)
         }
         .padding()

@@ -75,17 +75,34 @@ extension Color {
 // MARK: - Typography
 struct Typography {
     // Large Title
-    static let largeTitle = Font.largeTitle.bold()
+    static let largeTitle = Font.custom("Geist-Bold", size: 34)
     
     // Section Headers
-    static let title2 = Font.title2
-    static let title3 = Font.title3
+    static let title1 = Font.custom("Geist-Bold", size: 28)
+    static let title2 = Font.custom("Geist-SemiBold", size: 22)
+    static let title3 = Font.custom("Geist-SemiBold", size: 20)
+    
+    // Headlines
+    static let headline = Font.custom("Geist-SemiBold", size: 17)
+    static let subheadline = Font.custom("Geist-Medium", size: 15)
     
     // Body Text
-    static let body = Font.body
+    static let body = Font.custom("Geist-Regular", size: 17)
+    static let callout = Font.custom("Geist-Medium", size: 16)
     
     // Small Labels
-    static let caption = Font.caption
+    static let caption = Font.custom("Geist-Medium", size: 12)
+    static let footnote = Font.custom("Geist-Regular", size: 13)
+    
+    // Button Text
+    static let button = Font.custom("Geist-SemiBold", size: 16)
+    static let buttonSmall = Font.custom("Geist-Medium", size: 14)
+    
+    // Additional weights
+    static let light = Font.custom("Geist-Light", size: 17)
+    static let extraLight = Font.custom("Geist-ExtraLight", size: 17)
+    static let extraBold = Font.custom("Geist-ExtraBold", size: 17)
+    static let black = Font.custom("Geist-Black", size: 17)
 }
 
 // MARK: - UI Constants

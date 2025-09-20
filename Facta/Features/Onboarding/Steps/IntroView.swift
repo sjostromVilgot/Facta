@@ -29,7 +29,10 @@ struct IntroView: View {
                         tags: [FactTag(emoji: "🐙", label: "Djur")],
                         readTime: 20,
                         isPremium: false
-                    )
+                    ),
+                    isSaved: false,
+                    onSave: {},
+                    onShare: {}
                 )
                 .offset(x: -20, y: 10)
                 .rotationEffect(.degrees(-5))
@@ -44,7 +47,10 @@ struct IntroView: View {
                         tags: [FactTag(emoji: "🍯", label: "Mat")],
                         readTime: 30,
                         isPremium: true
-                    )
+                    ),
+                    isSaved: false,
+                    onSave: {},
+                    onShare: {}
                 )
                 .offset(x: 20, y: -10)
                 .rotationEffect(.degrees(5))
@@ -59,7 +65,10 @@ struct IntroView: View {
                         tags: [FactTag(emoji: "🍌", label: "Växter")],
                         readTime: 20,
                         isPremium: false
-                    )
+                    ),
+                    isSaved: false,
+                    onSave: {},
+                    onShare: {}
                 )
                 .opacity(0.9)
             }
@@ -68,7 +77,11 @@ struct IntroView: View {
             Spacer()
             
             Button("Nästa") {
-                store.send(.nextStep)
+                Task {
+                    withAnimation(.spring()) {
+                        store.send(.nextStep)
+                    }
+                }
             }
             .buttonStyle(PrimaryButtonStyle())
             .padding(.horizontal, UI.Padding.large)
@@ -82,7 +95,7 @@ struct IntroView: View {
 struct PrimaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.headline)
+            .font(Typography.button)
             .foregroundColor(.white)
             .padding(.horizontal, UI.Padding.large)
             .padding(.vertical, UI.Padding.medium)

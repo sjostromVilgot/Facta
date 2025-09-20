@@ -29,7 +29,7 @@ struct NotificationSettingsView: View {
                             .foregroundColor(viewStore.notificationsEnabled ? .green : .red)
                         
                         Text("Notiser \(viewStore.notificationsEnabled ? "aktiverade" : "inaktiverade")")
-                            .font(.headline)
+                            .font(Typography.headline)
                             .foregroundColor(.primary)
                         
                         Spacer()
@@ -42,7 +42,7 @@ struct NotificationSettingsView: View {
                     HStack {
                         VStack(alignment: .leading, spacing: UI.Spacing.small) {
                             Text("Dagens fakta 09:00")
-                                .font(.headline)
+                                .font(Typography.headline)
                                 .foregroundColor(.primary)
                             
                             Text("Få en ny fascinerande fakta varje dag")
@@ -66,7 +66,11 @@ struct NotificationSettingsView: View {
                 Spacer()
                 
                 Button("Börja utforska fakta") {
-                    viewStore.send(.finish)
+                    Task {
+                        withAnimation(.spring()) {
+                            viewStore.send(.finish)
+                        }
+                    }
                 }
                 .buttonStyle(PrimaryButtonStyle())
                 .padding(.horizontal, UI.Padding.large)

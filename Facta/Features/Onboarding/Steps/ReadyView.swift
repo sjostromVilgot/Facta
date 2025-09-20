@@ -24,7 +24,11 @@ struct ReadyView: View {
             Spacer()
             
             Button("Kom igång") {
-                store.send(.getStartedTapped)
+                Task {
+                    withAnimation(.spring()) {
+                        store.send(.getStartedTapped)
+                    }
+                }
             }
             .buttonStyle(PrimaryButtonStyle())
             .padding(.horizontal, UI.Padding.large)

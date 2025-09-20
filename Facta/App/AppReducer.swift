@@ -163,7 +163,7 @@ struct HomeReducer: Reducer {
                 return .none
                 
             case .share(let fact):
-                // TODO: Implement share functionality
+                // Share functionality handled in FactCardView
                 return .none
                 
             case .markRead(let fact):
@@ -305,7 +305,7 @@ struct FavoritesReducer: Reducer {
                 return .none
                 
             case .share(let fact):
-                // TODO: Implement share functionality
+                // Share functionality handled in FactCardView
                 return .none
             }
         }
@@ -421,6 +421,7 @@ struct ProfileReducer: Reducer {
                 name: "Första fakta",
                 description: "Läs din första fakta",
                 icon: "📖",
+                color: .blue,
                 isUnlocked: stats.totalFactsRead >= 1,
                 unlockedDate: stats.totalFactsRead >= 1 ? stats.joinDate : nil
             ),
@@ -429,6 +430,7 @@ struct ProfileReducer: Reducer {
                 name: "Fakta-läsare",
                 description: "Läs 10 fakta",
                 icon: "📚",
+                color: .green,
                 isUnlocked: stats.totalFactsRead >= 10,
                 unlockedDate: nil
             ),
@@ -437,6 +439,7 @@ struct ProfileReducer: Reducer {
                 name: "Quiz-mästare",
                 description: "Spela 5 quiz",
                 icon: "🧠",
+                color: .purple,
                 isUnlocked: stats.totalQuizzes >= 5,
                 unlockedDate: nil
             ),
@@ -445,6 +448,7 @@ struct ProfileReducer: Reducer {
                 name: "Perfektionist",
                 description: "Få 100% på ett quiz",
                 icon: "⭐",
+                color: .gold,
                 isUnlocked: stats.avgQuizScore >= 100,
                 unlockedDate: nil
             ),
@@ -453,6 +457,7 @@ struct ProfileReducer: Reducer {
                 name: "Streak-mästare",
                 description: "Få en streak på 5",
                 icon: "🔥",
+                color: .red,
                 isUnlocked: stats.bestQuizStreak >= 5,
                 unlockedDate: nil
             ),
@@ -461,6 +466,7 @@ struct ProfileReducer: Reducer {
                 name: "Hängiven",
                 description: "Läs 50 fakta",
                 icon: "💎",
+                color: .silver,
                 isUnlocked: stats.totalFactsRead >= 50,
                 unlockedDate: nil
             ),
@@ -469,6 +475,7 @@ struct ProfileReducer: Reducer {
                 name: "Quiz-mästare",
                 description: "Spela 20 quiz",
                 icon: "🏆",
+                color: .gold,
                 isUnlocked: stats.totalQuizzes >= 20,
                 unlockedDate: nil
             ),
@@ -477,6 +484,7 @@ struct ProfileReducer: Reducer {
                 name: "Kunskapssökare",
                 description: "Läs 100 fakta",
                 icon: "🎓",
+                color: .bronze,
                 isUnlocked: stats.totalFactsRead >= 100,
                 unlockedDate: nil
             )

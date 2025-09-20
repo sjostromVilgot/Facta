@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		984C1B822E7F57920047099A /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = A1234567890123456789012S /* ComposableArchitecture */; };
 		989ECF172E7F466B00F67979 /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF62E7F466B00F67979 /* ReadyView.swift */; };
 		989ECF182E7F466B00F67979 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFF2E7F466B00F67979 /* SettingsView.swift */; };
 		989ECF192E7F466B00F67979 /* QuizHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF032E7F466B00F67979 /* QuizHistoryView.swift */; };
@@ -86,11 +87,141 @@
 		A1234567890123456789012C /* Facta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		984C1C782E7F6C230047099A /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				"Fonts/Geist/otf/Geist-Black.otf",
+				"Fonts/Geist/otf/Geist-BlackItalic.otf",
+				"Fonts/Geist/otf/Geist-Bold.otf",
+				"Fonts/Geist/otf/Geist-BoldItalic.otf",
+				"Fonts/Geist/otf/Geist-ExtraBold.otf",
+				"Fonts/Geist/otf/Geist-ExtraBoldItalic.otf",
+				"Fonts/Geist/otf/Geist-ExtraLight.otf",
+				"Fonts/Geist/otf/Geist-ExtraLightItalic.otf",
+				"Fonts/Geist/otf/Geist-Light.otf",
+				"Fonts/Geist/otf/Geist-LightItalic.otf",
+				"Fonts/Geist/otf/Geist-Medium.otf",
+				"Fonts/Geist/otf/Geist-MediumItalic.otf",
+				"Fonts/Geist/otf/Geist-Regular.otf",
+				"Fonts/Geist/otf/Geist-RegularItalic.otf",
+				"Fonts/Geist/otf/Geist-SemiBold.otf",
+				"Fonts/Geist/otf/Geist-SemiBoldItalic.otf",
+				"Fonts/Geist/otf/Geist-Thin.otf",
+				"Fonts/Geist/otf/Geist-ThinItalic.otf",
+				"Fonts/Geist/ttf/Geist-Black.ttf",
+				"Fonts/Geist/ttf/Geist-BlackItalic.ttf",
+				"Fonts/Geist/ttf/Geist-Bold.ttf",
+				"Fonts/Geist/ttf/Geist-BoldItalic.ttf",
+				"Fonts/Geist/ttf/Geist-ExtraBold.ttf",
+				"Fonts/Geist/ttf/Geist-ExtraBoldItalic.ttf",
+				"Fonts/Geist/ttf/Geist-ExtraLight.ttf",
+				"Fonts/Geist/ttf/Geist-ExtraLightItalic.ttf",
+				"Fonts/Geist/ttf/Geist-Light.ttf",
+				"Fonts/Geist/ttf/Geist-LightItalic.ttf",
+				"Fonts/Geist/ttf/Geist-Medium.ttf",
+				"Fonts/Geist/ttf/Geist-MediumItalic.ttf",
+				"Fonts/Geist/ttf/Geist-Regular.ttf",
+				"Fonts/Geist/ttf/Geist-RegularItalic.ttf",
+				"Fonts/Geist/ttf/Geist-SemiBold.ttf",
+				"Fonts/Geist/ttf/Geist-SemiBoldItalic.ttf",
+				"Fonts/Geist/ttf/Geist-Thin.ttf",
+				"Fonts/Geist/ttf/Geist-ThinItalic.ttf",
+				"Fonts/Geist/variable/Geist-Italic[wght].ttf",
+				"Fonts/Geist/variable/Geist[wght].ttf",
+				"Fonts/Geist/webfonts/Geist-Black.woff2",
+				"Fonts/Geist/webfonts/Geist-BlackItalic.woff2",
+				"Fonts/Geist/webfonts/Geist-Bold.woff2",
+				"Fonts/Geist/webfonts/Geist-BoldItalic.woff2",
+				"Fonts/Geist/webfonts/Geist-ExtraBold.woff2",
+				"Fonts/Geist/webfonts/Geist-ExtraBoldItalic.woff2",
+				"Fonts/Geist/webfonts/Geist-ExtraLight.woff2",
+				"Fonts/Geist/webfonts/Geist-ExtraLightItalic.woff2",
+				"Fonts/Geist/webfonts/Geist-Italic[wght].woff2",
+				"Fonts/Geist/webfonts/Geist-Light.woff2",
+				"Fonts/Geist/webfonts/Geist-LightItalic.woff2",
+				"Fonts/Geist/webfonts/Geist-Medium.woff2",
+				"Fonts/Geist/webfonts/Geist-MediumItalic.woff2",
+				"Fonts/Geist/webfonts/Geist-Regular.woff2",
+				"Fonts/Geist/webfonts/Geist-RegularItalic.woff2",
+				"Fonts/Geist/webfonts/Geist-SemiBold.woff2",
+				"Fonts/Geist/webfonts/Geist-SemiBoldItalic.woff2",
+				"Fonts/Geist/webfonts/Geist-Thin.woff2",
+				"Fonts/Geist/webfonts/Geist-ThinItalic.woff2",
+				"Fonts/Geist/webfonts/Geist[wght].woff2",
+				"Fonts/GeistMono/otf/GeistMono-Black.otf",
+				"Fonts/GeistMono/otf/GeistMono-BlackItalic.otf",
+				"Fonts/GeistMono/otf/GeistMono-Bold.otf",
+				"Fonts/GeistMono/otf/GeistMono-BoldItalic.otf",
+				"Fonts/GeistMono/otf/GeistMono-ExtraBold.otf",
+				"Fonts/GeistMono/otf/GeistMono-ExtraBoldItalic.otf",
+				"Fonts/GeistMono/otf/GeistMono-ExtraLight.otf",
+				"Fonts/GeistMono/otf/GeistMono-ExtraLightItalic.otf",
+				"Fonts/GeistMono/otf/GeistMono-Italic.otf",
+				"Fonts/GeistMono/otf/GeistMono-Light.otf",
+				"Fonts/GeistMono/otf/GeistMono-LightItalic.otf",
+				"Fonts/GeistMono/otf/GeistMono-Medium.otf",
+				"Fonts/GeistMono/otf/GeistMono-MediumItalic.otf",
+				"Fonts/GeistMono/otf/GeistMono-Regular.otf",
+				"Fonts/GeistMono/otf/GeistMono-SemiBold.otf",
+				"Fonts/GeistMono/otf/GeistMono-SemiBoldItalic.otf",
+				"Fonts/GeistMono/otf/GeistMono-Thin.otf",
+				"Fonts/GeistMono/otf/GeistMono-ThinItalic.otf",
+				"Fonts/GeistMono/ttf/GeistMono-Black.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-BlackItalic.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-Bold.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-BoldItalic.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-ExtraBold.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-ExtraBoldItalic.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-ExtraLight.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-ExtraLightItalic.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-Italic.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-Light.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-LightItalic.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-Medium.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-MediumItalic.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-Regular.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-SemiBold.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-SemiBoldItalic.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-Thin.ttf",
+				"Fonts/GeistMono/ttf/GeistMono-ThinItalic.ttf",
+				"Fonts/GeistMono/variable/GeistMono-Italic[wght].ttf",
+				"Fonts/GeistMono/variable/GeistMono[wght].ttf",
+				"Fonts/GeistMono/webfonts/GeistMono-Black.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-BlackItalic.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-Bold.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-BoldItalic.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-ExtraBold.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-ExtraBoldItalic.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-ExtraLight.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-ExtraLightItalic.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-Italic.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-Italic[wght].woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-Light.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-LightItalic.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-Medium.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-MediumItalic.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-Regular.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-SemiBold.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-SemiBoldItalic.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-Thin.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono-ThinItalic.woff2",
+				"Fonts/GeistMono/webfonts/GeistMono[wght].woff2",
+			);
+			target = A1234567890123456789012G /* Facta */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		984C1B832E7F6B960047099A /* Resources */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (984C1C782E7F6C230047099A /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = Resources; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		A1234567890123456789012J /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				984C1B822E7F57920047099A /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +363,7 @@
 				989ECF0D2E7F466B00F67979 /* Models */,
 				989ECF0E2E7F466B00F67979 /* Preview Content */,
 				989ECF122E7F466B00F67979 /* Services */,
+				984C1B832E7F6B960047099A /* Resources */,
 				989ECF132E7F466B00F67979 /* Info.plist */,
 			);
 			path = Facta;

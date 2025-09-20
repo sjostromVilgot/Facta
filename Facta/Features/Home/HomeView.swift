@@ -14,52 +14,37 @@ struct HomeView: View {
                         VStack(alignment: .leading, spacing: UI.Spacing.medium) {
                             HStack {
                                 Text("✨ Dagens fakta")
-                                    .font(.headline)
-                                    .foregroundColor(.primary)
+                                    .font(Typography.headline)
+                                    .foregroundColor(Color.adaptiveForeground)
                                 
                                 if dailyFact.isPremium {
                                     Text("PREMIUM")
-                                        .font(.caption)
-                                        .fontWeight(.bold)
+                                        .font(Typography.caption)
                                         .foregroundColor(.white)
                                         .padding(.horizontal, UI.Padding.small)
                                         .padding(.vertical, 4)
-                                        .background(Color.accent)
-                                        .cornerRadius(8)
+                                        .background(
+                                            LinearGradient(colors: [.primary, .secondary],
+                                                           startPoint: .leading, endPoint: .trailing)
+                                        )
+                                        .cornerRadius(50)
                                 }
                                 
                                 Spacer()
                             }
                             
-                            FactCardView(fact: dailyFact)
-                                .onAppear {
-                                    viewStore.send(.markRead(dailyFact))
-                                }
-                            
-                            HStack(spacing: UI.Spacing.medium) {
-                                Button(action: {
+                            FactCardView(
+                                fact: dailyFact,
+                                isSaved: viewStore.favorites.contains(dailyFact.id),
+                                onSave: {
                                     viewStore.send(.save(dailyFact))
-                                }) {
-                                    HStack {
-                                        Image(systemName: viewStore.favorites.contains(dailyFact.id) ? "heart.fill" : "heart")
-                                        Text("Spara")
-                                    }
-                                    .foregroundColor(viewStore.favorites.contains(dailyFact.id) ? .red : .primary)
-                                }
-                                .buttonStyle(SecondaryButtonStyle())
-                                
-                                Button(action: {
+                                },
+                                onShare: {
                                     viewStore.send(.share(dailyFact))
-                                }) {
-                                    HStack {
-                                        Image(systemName: "square.and.arrow.up")
-                                        Text("Dela")
-                                    }
-                                    .foregroundColor(.primary)
                                 }
-                                .buttonStyle(SecondaryButtonStyle())
-                                
-                                Spacer()
+                            )
+                            .onAppear {
+                                viewStore.send(.markRead(dailyFact))
                             }
                         }
                     }
@@ -69,46 +54,83 @@ struct HomeView: View {
                         VStack(alignment: .leading, spacing: UI.Spacing.medium) {
                             HStack {
                                 Text("Upptäck mer")
-                                    .font(.headline)
+                                    .font(Typography.headline)
                                     .foregroundColor(.primary)
                                 
                                 Spacer()
                                 
                                 Text("\(viewStore.index + 1) av \(viewStore.discovery.count)")
-                                    .font(.caption)
+                                    .font(Typography.caption)
                                     .foregroundColor(.secondary)
                                 
                                 Button("Blanda") {
                                     viewStore.send(.shuffle)
                                 }
-                                .font(.caption)
+                                .font(Typography.caption)
                                 .foregroundColor(.primary)
                             }
                             
                             // Discovery Card with Swipe
                             ZStack {
                                 if viewStore.index < viewStore.discovery.count {
-                                    FactCardView(fact: viewStore.discovery[viewStore.index])
-                                        .offset(x: dragOffset)
-                                        .gesture(
-                                            DragGesture()
-                                                .onChanged { value in
-                                                    dragOffset = value.translation.width
-                                                }
-                                                .onEnded { value in
-                                                    withAnimation(.spring()) {
-                                                        if value.translation.width > 120 {
-                                                            // Swipe right - save and next
-                                                            viewStore.send(.save(viewStore.discovery[viewStore.index]))
-                                                            viewStore.send(.next)
-                                                        } else if value.translation.width < -120 {
-                                                            // Swipe left - next
-                                                            viewStore.send(.next)
-                                                        }
-                                                        dragOffset = 0
-                                                    }
-                                                }
+                                    ZStack {
+                                        FactCardView(
+                                            fact: viewStore.discovery[viewStore.index],
+                                            isSaved: viewStore.favorites.contains(viewStore.discovery[viewStore.index].id),
+                                            onSave: {
+                                                viewStore.send(.save(viewStore.discovery[viewStore.index]))
+                                            },
+                                            onShare: {
+                                                viewStore.send(.share(viewStore.discovery[viewStore.index]))
+                                            },
+                                            onNext: {
+                                                viewStore.send(.next)
+                                            }
                                         )
+                                        .offset(x: dragOffset)
+                                        .rotationEffect(.degrees(Double(dragOffset) * 0.03))
+                                        .opacity(1 - min(abs(dragOffset) / 500.0, 0.3))
+                                        
+                                        // Swipe feedback overlays
+                                        if dragOffset > 50 {
+                                            Text("Spara")
+                                                .font(.headline)
+                                                .foregroundColor(.white)
+                                                .padding(.horizontal, 16)
+                                                .padding(.vertical, 8)
+                                                .background(Color.green.opacity(0.8))
+                                                .cornerRadius(20)
+                                                .position(x: 280, y: 40)
+                                        } else if dragOffset < -50 {
+                                            Text("Nästa")
+                                                .font(.headline)
+                                                .foregroundColor(.white)
+                                                .padding(.horizontal, 16)
+                                                .padding(.vertical, 8)
+                                                .background(Color.red.opacity(0.8))
+                                                .cornerRadius(20)
+                                                .position(x: 60, y: 40)
+                                        }
+                                    }
+                                    .gesture(
+                                        DragGesture()
+                                            .onChanged { value in
+                                                dragOffset = value.translation.width
+                                            }
+                                            .onEnded { value in
+                                                withAnimation(.spring()) {
+                                                    if value.translation.width > 120 {
+                                                        // Swipe right - save and next
+                                                        viewStore.send(.save(viewStore.discovery[viewStore.index]))
+                                                        viewStore.send(.next)
+                                                    } else if value.translation.width < -120 {
+                                                        // Swipe left - next
+                                                        viewStore.send(.next)
+                                                    }
+                                                    dragOffset = 0
+                                                }
+                                            }
+                                    )
                                 }
                             }
                             .frame(height: 200)
