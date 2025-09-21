@@ -38,6 +38,29 @@ enum QuizViewMode: Equatable {
     case history
 }
 
+enum FavoritesViewMode: String, Equatable, CaseIterable {
+    case list = "list"
+    case grid = "grid"
+    
+    var displayName: String {
+        switch self {
+        case .list:
+            return "Lista"
+        case .grid:
+            return "Rutnät"
+        }
+    }
+    
+    var icon: String {
+        switch self {
+        case .list:
+            return "list.bullet"
+        case .grid:
+            return "square.grid.2x2"
+        }
+    }
+}
+
 struct QuizState: Equatable {
     var mode: QuizViewMode = .overview
     var quizMode: QuizMode? = nil
@@ -143,7 +166,9 @@ struct Challenge: Identifiable, Equatable {
     var progress: Int
     var isCompleted: Bool
     let isDaily: Bool
-    let reward: Int // XP reward
+    let rewardXP: Int // XP reward
+    let icon: String
+    let color: String
 }
 
 struct Match: Identifiable, Equatable {

@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 struct Challenge: Identifiable, Equatable, Codable {
     let id: UUID

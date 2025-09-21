@@ -549,17 +549,17 @@ struct ChallengesReducer: Reducer {
     
     private func generateDailyChallenges() -> [Challenge] {
         return [
-            Challenge(description: "Läs 5 fakta idag", target: 5, progress: 0, isCompleted: false, isDaily: true, reward: 25),
-            Challenge(description: "Genomför ett quiz idag", target: 1, progress: 0, isCompleted: false, isDaily: true, reward: 50),
-            Challenge(description: "Håll din streak vid liv", target: 1, progress: 0, isCompleted: false, isDaily: true, reward: 15)
+            Challenge(description: "Läs 5 fakta idag", target: 5, progress: 0, isCompleted: false, isDaily: true, rewardXP: 50, icon: "book.fill", color: "blue"),
+            Challenge(description: "Genomför ett quiz idag", target: 1, progress: 0, isCompleted: false, isDaily: true, rewardXP: 75, icon: "brain.head.profile", color: "green"),
+            Challenge(description: "Håll din streak vid liv", target: 1, progress: 0, isCompleted: false, isDaily: true, rewardXP: 40, icon: "flame.fill", color: "orange")
         ]
     }
     
     private func generateWeeklyChallenges() -> [Challenge] {
         return [
-            Challenge(description: "Läs 30 fakta denna vecka", target: 30, progress: 0, isCompleted: false, isDaily: false, reward: 100),
-            Challenge(description: "Genomför 5 quiz denna vecka", target: 5, progress: 0, isCompleted: false, isDaily: false, reward: 200),
-            Challenge(description: "Håll en 7-dagars streak", target: 7, progress: 0, isCompleted: false, isDaily: false, reward: 150)
+            Challenge(description: "Läs 30 fakta denna vecka", target: 30, progress: 0, isCompleted: false, isDaily: false, rewardXP: 200, icon: "book.circle.fill", color: "blue"),
+            Challenge(description: "Genomför 5 quiz denna vecka", target: 5, progress: 0, isCompleted: false, isDaily: false, rewardXP: 300, icon: "brain.head.profile", color: "green"),
+            Challenge(description: "Håll en 7-dagars streak", target: 7, progress: 0, isCompleted: false, isDaily: false, rewardXP: 500, icon: "flame.fill", color: "orange")
         ]
     }
 }

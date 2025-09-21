@@ -41,6 +41,7 @@
 		989ECF362E7F466B00F67979 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF92E7F466B00F67979 /* OnboardingFeature.swift */; };
 		989ECF372E7F466B00F67979 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEE92E7F466B00F67979 /* DesignTokens.swift */; };
 		989ECF382E7F466B00F67979 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF0C2E7F466B00F67979 /* User.swift */; };
+		989ECF3E2E7F466B00F67979 /* StreakData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF3F2E7F466B00F67979 /* StreakData.swift */; };
 		989ECF392E7F466B00F67979 /* SwipeHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF72E7F466B00F67979 /* SwipeHintView.swift */; };
 		989ECF3A2E7F466B00F67979 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF062E7F466B00F67979 /* QuizView.swift */; };
 		989ECF3B2E7F466B00F67979 /* QuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF052E7F466B00F67979 /* QuizResultView.swift */; };
@@ -80,6 +81,7 @@
 		989ECF0A2E7F466B00F67979 /* Fact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fact.swift; sourceTree = "<group>"; };
 		989ECF0B2E7F466B00F67979 /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
 		989ECF0C2E7F466B00F67979 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		989ECF3F2E7F466B00F67979 /* StreakData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakData.swift; sourceTree = "<group>"; };
 		989ECF0F2E7F466B00F67979 /* LocalDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataClient.swift; sourceTree = "<group>"; };
 		989ECF102E7F466B00F67979 /* NotificationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationClient.swift; sourceTree = "<group>"; };
 		989ECF112E7F466B00F67979 /* PersistenceClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceClient.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 				989ECF092E7F466B00F67979 /* Badge.swift */,
 				989ECF0A2E7F466B00F67979 /* Fact.swift */,
 				989ECF0B2E7F466B00F67979 /* Quiz.swift */,
+				989ECF3F2E7F466B00F67979 /* StreakData.swift */,
 				989ECF0C2E7F466B00F67979 /* User.swift */,
 			);
 			path = Models;
@@ -492,6 +495,7 @@
 				989ECF362E7F466B00F67979 /* OnboardingFeature.swift in Sources */,
 				989ECF372E7F466B00F67979 /* DesignTokens.swift in Sources */,
 				989ECF382E7F466B00F67979 /* User.swift in Sources */,
+				989ECF3E2E7F466B00F67979 /* StreakData.swift in Sources */,
 				989ECF392E7F466B00F67979 /* SwipeHintView.swift in Sources */,
 				989ECF3A2E7F466B00F67979 /* QuizView.swift in Sources */,
 				989ECF3B2E7F466B00F67979 /* QuizResultView.swift in Sources */,
