@@ -65,6 +65,15 @@ struct ConfettiPiece: Identifiable {
     var rotation: Double
     let color: Color
     let shape: ConfettiShape
+    
+    init(id: UUID = UUID(), x: Double, y: Double, rotation: Double, color: Color, shape: ConfettiShape) {
+        self.id = id
+        self.x = x
+        self.y = y
+        self.rotation = rotation
+        self.color = color
+        self.shape = shape
+    }
 }
 
 enum ConfettiShape: CaseIterable {
