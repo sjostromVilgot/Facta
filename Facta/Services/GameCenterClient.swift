@@ -7,6 +7,8 @@ struct GameCenterClient {
     var submitScore: (Int, String) async throws -> Void
     var loadLeaderboard: (String) async throws -> [LeaderboardEntry]
     var loadLocalPlayerScore: (String) async throws -> LeaderboardEntry?
+    var findRandomOpponent: () async throws -> Opponent
+    var startMatch: (Opponent) async throws -> Match
 }
 
 extension GameCenterClient: DependencyKey {
@@ -48,49 +50,43 @@ extension GameCenterClient: DependencyKey {
                 )
             }
             return nil
+        },
+        findRandomOpponent: {
+            // Find a random opponent for quick match
+            return Opponent(
+                id: UUID(),
+                name: "Random Player",
+                avatar: "🎲",
+                level: Int.random(in: 1...10),
+                isOnline: true
+            )
+        },
+        startMatch: { opponent in
+            // Start a match with the opponent
+            return Match(
+                id: UUID(),
+                opponent: opponent,
+                result: MatchResult(playerScore: 0, opponentScore: 0, isWinner: false),
+                date: Date()
+            )
         }
     )
-}
-
-extension GameCenterClient: DependencyKey {
-    static let liveValue = Self(
-        authenticate: {
-            let localPlayer = GKLocalPlayer.local
-            return try await localPlayer.authenticateHandler == nil
+    
+    static let testValue = Self(
+        authenticate: { true },
+        submitScore: { _, _ in },
+        loadLeaderboard: { _ in [] },
+        loadLocalPlayerScore: { _ in nil },
+        findRandomOpponent: { 
+            Opponent(id: UUID(), name: "Test Player", avatar: "🧪", level: 5, isOnline: true)
         },
-        submitScore: { score, leaderboardID in
-            let localPlayer = GKLocalPlayer.local
-            try await localPlayer.submitScore(score, category: leaderboardID)
-        },
-        loadLeaderboard: { leaderboardID in
-            let leaderboard = GKLeaderboard()
-            leaderboard.identifier = leaderboardID
-            leaderboard.timeScope = .allTime
-            leaderboard.range = NSRange(location: 1, length: 100)
-            
-            let entries = try await leaderboard.loadEntries(for: .global, timeScope: .allTime)
-            return entries.map { entry in
-                LeaderboardEntry(
-                    playerName: entry.player.displayName,
-                    score: entry.score,
-                    rank: entry.rank
-                )
-            }
-        },
-        loadLocalPlayerScore: { leaderboardID in
-            let leaderboard = GKLeaderboard()
-            leaderboard.identifier = leaderboardID
-            leaderboard.timeScope = .allTime
-            
-            let entries = try await leaderboard.loadEntries(for: .friends, timeScope: .allTime)
-            if let entry = entries.first {
-                return LeaderboardEntry(
-                    playerName: entry.player.displayName,
-                    score: entry.score,
-                    rank: entry.rank
-                )
-            }
-            return nil
+        startMatch: { opponent in
+            Match(
+                id: UUID(),
+                opponent: opponent,
+                result: MatchResult(playerScore: 0, opponentScore: 0, isWinner: false),
+                date: Date()
+            )
         }
     )
 }
@@ -109,8 +105,8 @@ struct LeaderboardEntry: Identifiable, Equatable {
     let rank: Int
 }
 
-struct LeaderboardIdentifier {
-    static let quizScore = "quiz_score"
-    static let totalXP = "total_xp"
-    static let streak = "streak"
+enum LeaderboardIdentifier {
+    static let quizScore = "com.facta.quiz.score"
+    static let totalXP = "com.facta.total.xp"
+    static let streak = "com.facta.streak"
 }

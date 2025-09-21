@@ -28,6 +28,7 @@ struct HomeState: Equatable {
     var index: Int = 0
     var isLoading: Bool = false
     var favorites: Set<String> = []
+    var streakDays: Int = 0  // Missing property referenced in HomeView
 }
 
 enum QuizViewMode: Equatable {
@@ -131,6 +132,8 @@ struct Friend: Identifiable, Equatable {
     let avatar: String
     let level: Int
     let isOnline: Bool
+    let totalFactsRead: Int
+    let bestStreak: Int
 }
 
 struct Challenge: Identifiable, Equatable {
@@ -161,6 +164,7 @@ struct Opponent: Identifiable, Equatable {
     let name: String
     let avatar: String
     let level: Int
+    let isOnline: Bool
 }
 
 

@@ -107,6 +107,11 @@ struct HomeReducer: Reducer {
                 state.dailyFact = localDataClient.loadDailyFact()
                 state.discovery = localDataClient.loadDiscoveryFacts()
                 state.favorites = Set(persistenceClient.loadFavorites().map { $0.id })
+                
+                // Load streak data
+                let streakData = persistenceClient.loadStreakData()
+                state.streakDays = streakData.currentStreak
+                
                 state.isLoading = false
                 return .none
                 
@@ -390,7 +395,7 @@ struct FriendsReducer: Reducer {
                 return .none
                 
             case .addFriend(let name):
-                let newFriend = Friend(name: name, avatar: "👤", level: 1, isOnline: false)
+                let newFriend = Friend(name: name, avatar: "👤", level: 1, isOnline: false, totalFactsRead: 0, bestStreak: 0)
                 state.friends.append(newFriend)
                 state.newFriendName = ""
                 state.showingAddFriend = false
@@ -435,7 +440,7 @@ struct FriendsReducer: Reducer {
                             let opponent = try await gameCenterClient.findRandomOpponent()
                             await send(.opponentFound(opponent))
                         } else {
-                            let opponent = Opponent(name: "Random Player", avatar: "🎲", level: Int.random(in: 3...8))
+                            let opponent = Opponent(name: "Random Player", avatar: "🎲", level: Int.random(in: 3...8), isOnline: true)
                             await send(.opponentFound(opponent))
                         }
                     } catch {
@@ -463,21 +468,21 @@ struct FriendsReducer: Reducer {
     
     private func generateSampleFriends() -> [Friend] {
         return [
-            Friend(name: "Anna", avatar: "👩", level: 5, isOnline: true),
-            Friend(name: "Erik", avatar: "👨", level: 3, isOnline: false),
-            Friend(name: "Maria", avatar: "👩‍🦱", level: 7, isOnline: true)
+            Friend(name: "Anna", avatar: "👩", level: 5, isOnline: true, totalFactsRead: 150, bestStreak: 12),
+            Friend(name: "Erik", avatar: "👨", level: 3, isOnline: false, totalFactsRead: 75, bestStreak: 8),
+            Friend(name: "Maria", avatar: "👩‍🦱", level: 7, isOnline: true, totalFactsRead: 200, bestStreak: 15)
         ]
     }
     
     private func generateSamplePendingRequests() -> [Friend] {
         return [
-            Friend(name: "Lars", avatar: "👨‍🦳", level: 4, isOnline: false)
+            Friend(name: "Lars", avatar: "👨‍🦳", level: 4, isOnline: false, totalFactsRead: 100, bestStreak: 10)
         ]
     }
     
     private func generateSampleSentRequests() -> [Friend] {
         return [
-            Friend(name: "Sofia", avatar: "👩‍🦰", level: 6, isOnline: true)
+            Friend(name: "Sofia", avatar: "👩‍🦰", level: 6, isOnline: true, totalFactsRead: 180, bestStreak: 14)
         ]
     }
 }
