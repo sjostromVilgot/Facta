@@ -602,11 +602,11 @@ struct BadgeView: View {
         .frame(maxWidth: .infinity)
         .background(
             RoundedRectangle(cornerRadius: UI.corner)
-                .fill(badge.isUnlocked ? badge.color.opacity(0.2) : Color.muted.opacity(0.3))
+                .fill(badge.isUnlocked ? badge.color.swiftUIColor.opacity(0.2) : Color.muted.opacity(0.3))
         )
         .overlay(
             RoundedRectangle(cornerRadius: UI.corner)
-                .stroke(badge.isUnlocked ? badge.color : Color.clear, lineWidth: 2)
+                .stroke(badge.isUnlocked ? badge.color.swiftUIColor : Color.clear, lineWidth: 2)
         )
     }
 }

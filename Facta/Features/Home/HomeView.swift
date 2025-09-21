@@ -7,7 +7,7 @@ struct HomeView: View {
     
     var body: some View {
         WithViewStore(store, observe: \.self) { viewStore in
-            ScrollView {
+            ScrollView(.vertical, showsIndicators: false) {
                 VStack(spacing: UI.Spacing.large) {
                     // Daily Fact Section
                     if let dailyFact = viewStore.dailyFact {
