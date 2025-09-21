@@ -47,6 +47,12 @@ struct AppReducer: Reducer {
                 UserDefaults.standard.set(isComplete, forKey: "facta-onboarding-complete")
                 return .none
                 
+            case .onboarding(.getStartedTapped):
+                // When user taps "Kom igång", mark onboarding as complete
+                state.onboardingComplete = true
+                UserDefaults.standard.set(true, forKey: "facta-onboarding-complete")
+                return .none
+                
             default:
                 return .none
             }
