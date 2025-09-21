@@ -118,6 +118,7 @@ struct ProfileState: Equatable {
         joinDate: Date()
     )
     var badges: [Badge] = []
+    var quizHistory: [QuizResult] = []
     var leveledUp: Bool = false
     var challengeCompleted: Bool = false
 }

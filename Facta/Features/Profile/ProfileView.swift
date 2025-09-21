@@ -3,16 +3,8 @@ import ComposableArchitecture
 import UIKit
 import Charts
 
-enum CelebrationType {
-    case levelUp
-    case badgeUnlocked
-    case quizPerfect
-    case quizHighScore
-    case streakMilestone
-}
-
 struct ProfileView: View {
-    let store: StoreOf<ProfileReducer>
+    let store: Store<ProfileState, ProfileAction>
     @State private var showingSettings = false
     @State private var showingAbout = false
     @State private var celebrationType: CelebrationType?
@@ -706,82 +698,5 @@ struct ConfettiPiece: View {
                     .delay(Double.random(in: 0...2)),
                 value: animate
             )
-    }
-}
-
-// MARK: - Celebration Overlay
-struct CelebrationOverlay: View {
-    let isVisible: Bool
-    let type: CelebrationType
-    let onComplete: () -> Void
-    
-    var body: some View {
-        if isVisible {
-            ZStack {
-                Color.black.opacity(0.3)
-                    .ignoresSafeArea()
-                
-                VStack(spacing: 20) {
-                    Text(celebrationTitle)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                    
-                    Text(celebrationMessage)
-                        .font(.title2)
-                        .foregroundColor(.white)
-                        .multilineTextAlignment(.center)
-                    
-                    Button("Stäng") {
-                        onComplete()
-                    }
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                }
-                .padding()
-                .background(Color.black.opacity(0.8))
-                .cornerRadius(20)
-                .padding()
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    onComplete()
-                }
-            }
-        }
-    }
-    
-    private var celebrationTitle: String {
-        switch type {
-        case .levelUp:
-            return "🎉 Nivå upp! 🎉"
-        case .badgeUnlocked:
-            return "🏆 Badge upplåst! 🏆"
-        case .quizPerfect:
-            return "💯 Perfekt! 💯"
-        case .quizHighScore:
-            return "🔥 Ny rekord! 🔥"
-        case .streakMilestone:
-            return "⚡ Streak-milstolpe! ⚡"
-        }
-    }
-    
-    private var celebrationMessage: String {
-        switch type {
-        case .levelUp:
-            return "Grattis! Du har gått upp i nivå!"
-        case .badgeUnlocked:
-            return "Du har låst upp en ny badge!"
-        case .quizPerfect:
-            return "Fantastiskt! Du fick alla rätt!"
-        case .quizHighScore:
-            return "Imponerande! Nytt rekord!"
-        case .streakMilestone:
-            return "Otroligt! Du håller igång din streak!"
-        }
     }
 }
