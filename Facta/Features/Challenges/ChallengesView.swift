@@ -72,7 +72,7 @@ struct ChallengeCardView: View {
                     
                     Spacer()
                     
-                    Text("\(challenge.reward) XP")
+                    Text("\(challenge.rewardXP) XP")
                         .font(Typography.caption)
                         .foregroundColor(.accent)
                 }

@@ -48,6 +48,9 @@
 		989ECF402E7F466B00F67979 /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF412E7F466B00F67979 /* ChallengesView.swift */; };
 		989ECF422E7F466B00F67979 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF432E7F466B00F67979 /* FriendsView.swift */; };
 		989ECF462E7F466B00F67979 /* AvatarSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF472E7F466B00F67979 /* AvatarSelectionView.swift */; };
+		989ECF482E7F466B00F67979 /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF492E7F466B00F67979 /* ShareButton.swift */; };
+		989ECF4A2E7F466B00F67979 /* StreakIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF4B2E7F466B00F67979 /* StreakIndicatorView.swift */; };
+		989ECF4C2E7F466B00F67979 /* ConfettiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF4D2E7F466B00F67979 /* ConfettiView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +96,9 @@
 		989ECF412E7F466B00F67979 /* ChallengesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesView.swift; sourceTree = "<group>"; };
 		989ECF432E7F466B00F67979 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
 		989ECF472E7F466B00F67979 /* AvatarSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionView.swift; sourceTree = "<group>"; };
+		989ECF492E7F466B00F67979 /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
+		989ECF4B2E7F466B00F67979 /* StreakIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreakIndicatorView.swift; sourceTree = "<group>"; };
+		989ECF4D2E7F466B00F67979 /* ConfettiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfettiView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -386,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				989ECEE82E7F466B00F67979 /* App */,
+				989ECF4E2E7F466B00F67979 /* Components */,
 				989ECEEA2E7F466B00F67979 /* Design */,
 				989ECF082E7F466B00F67979 /* Features */,
 				989ECF0D2E7F466B00F67979 /* Models */,
@@ -395,6 +402,16 @@
 				989ECF132E7F466B00F67979 /* Info.plist */,
 			);
 			path = Facta;
+			sourceTree = "<group>";
+		};
+		989ECF4E2E7F466B00F67979 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				989ECF4D2E7F466B00F67979 /* ConfettiView.swift */,
+				989ECF492E7F466B00F67979 /* ShareButton.swift */,
+				989ECF4B2E7F466B00F67979 /* StreakIndicatorView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		A1234567890123456789012E /* Products */ = {
@@ -527,6 +544,9 @@
 				989ECF402E7F466B00F67979 /* ChallengesView.swift in Sources */,
 				989ECF422E7F466B00F67979 /* FriendsView.swift in Sources */,
 				989ECF462E7F466B00F67979 /* AvatarSelectionView.swift in Sources */,
+				989ECF482E7F466B00F67979 /* ShareButton.swift in Sources */,
+				989ECF4A2E7F466B00F67979 /* StreakIndicatorView.swift in Sources */,
+				989ECF4C2E7F466B00F67979 /* ConfettiView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
