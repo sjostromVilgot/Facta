@@ -83,10 +83,6 @@ enum ChallengeStage: Equatable {
     case finished
 }
 
-enum FavoritesViewMode: Equatable {
-    case grid
-    case list
-}
 
 struct FavoritesState: Equatable {
     var items: [Fact] = []

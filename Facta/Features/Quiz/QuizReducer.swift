@@ -76,9 +76,12 @@ struct QuizReducer: Reducer {
                 } else {
                     state.mode = .result
                     let result = QuizResult(
+                        id: UUID().uuidString,
+                        date: Date(),
+                        mode: state.quizMode ?? .recap,
                         score: state.score,
                         total: state.questions.count,
-                        date: Date()
+                        bestStreak: state.streak
                     )
                     persistenceClient.saveQuizResult(result)
                     state.history.append(result)

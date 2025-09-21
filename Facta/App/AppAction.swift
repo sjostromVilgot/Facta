@@ -35,7 +35,7 @@ enum HomeAction: Equatable {
     case markRead(Fact)
 }
 
-enum QuizAction: Equatable {
+enum QuizAction: Equatable, BindableAction {
     case start(QuizMode)
     case questionsLoaded([QuizQuestion])
     case tick
@@ -48,6 +48,7 @@ enum QuizAction: Equatable {
     case backToOverview
     case result(QuizResult)
     case challengeCompleted(QuizMode, QuizResult)
+    case binding(BindingAction<QuizState>)
 }
 
 enum FavoritesAction: Equatable {

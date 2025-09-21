@@ -113,6 +113,18 @@ struct HistoryRowView: View {
             return "questionmark.circle.fill"
         case .trueFalse:
             return "checkmark.circle.fill"
+        case .image:
+            return "photo.circle.fill"
+        case .fillBlank:
+            return "pencil.circle.fill"
+        case .blitz:
+            return "bolt.circle.fill"
+        case .daily:
+            return "calendar.circle.fill"
+        case .weekly:
+            return "calendar.badge.plus"
+        case .challenge:
+            return "person.2.circle.fill"
         }
     }
     
@@ -122,6 +134,18 @@ struct HistoryRowView: View {
             return .primary
         case .trueFalse:
             return .secondary
+        case .image:
+            return .blue
+        case .fillBlank:
+            return .green
+        case .blitz:
+            return .orange
+        case .daily:
+            return .purple
+        case .weekly:
+            return .red
+        case .challenge:
+            return .pink
         }
     }
     
@@ -131,6 +155,18 @@ struct HistoryRowView: View {
             return "Recap-quiz"
         case .trueFalse:
             return "Sant/Falskt"
+        case .image:
+            return "Bild-quiz"
+        case .fillBlank:
+            return "Fyll-i-quiz"
+        case .blitz:
+            return "Blixt-quiz"
+        case .daily:
+            return "Dagens quiz"
+        case .weekly:
+            return "Veckans quiz"
+        case .challenge:
+            return "Utmaning"
         }
     }
     

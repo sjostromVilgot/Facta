@@ -5,7 +5,7 @@ struct QuizResultView: View {
     let store: StoreOf<QuizReducer>
     
     var body: some View {
-        WithViewStore(store, observe: { $0 }) { viewStore in
+        WithViewStore(store, observe: \.self) { viewStore in
             ZStack {
                 mainContent(viewStore: viewStore)
                 

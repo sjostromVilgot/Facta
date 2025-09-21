@@ -14,29 +14,10 @@ struct PersistenceClient {
     var saveLastActiveDate: (Date) -> Void
     var loadStreakData: () -> StreakData
     var saveStreakData: (StreakData) -> Void
+    var loadUserSettings: () -> UserSettings
     var saveUserSettings: (UserSettings) -> Void
 }
 
-// MARK: - Streak Data Model
-struct StreakData: Codable, Equatable {
-    var currentStreak: Int
-    var longestStreak: Int
-    var lastActiveDate: Date
-    var streakStartDate: Date?
-    var dailyRewardsClaimed: [String] // Array of dates (YYYY-MM-DD) when daily reward was claimed
-    var streakMilestones: [Int] // Array of streak lengths that have been rewarded
-}
-
-extension StreakData {
-    static let empty = StreakData(
-        currentStreak: 0,
-        longestStreak: 0,
-        lastActiveDate: Date.distantPast,
-        streakStartDate: nil,
-        dailyRewardsClaimed: [],
-        streakMilestones: []
-    )
-}
 
 extension PersistenceClient: DependencyKey {
     static let liveValue = PersistenceClient(
@@ -133,6 +114,20 @@ extension PersistenceClient: DependencyKey {
                 UserDefaults.standard.set(data, forKey: "streakData")
             }
         },
+        loadUserSettings: {
+            guard let data = UserDefaults.standard.data(forKey: "userSettings"),
+                  let settings = try? JSONDecoder().decode(UserSettings.self, from: data) else {
+                return UserSettings(
+                    dailyFactNotifications: true,
+                    quizReminders: true,
+                    theme: .system,
+                    language: "sv",
+                    displayName: "Gäst",
+                    avatar: .initials
+                )
+            }
+            return settings
+        },
         saveUserSettings: { settings in
             if let data = try? JSONEncoder().encode(settings) {
                 UserDefaults.standard.set(data, forKey: "userSettings")
@@ -152,6 +147,16 @@ extension PersistenceClient: DependencyKey {
         saveLastActiveDate: { _ in },
         loadStreakData: { StreakData.empty },
         saveStreakData: { _ in },
+        loadUserSettings: { 
+            UserSettings(
+                dailyFactNotifications: true,
+                quizReminders: true,
+                theme: .system,
+                language: "sv",
+                displayName: "Test User",
+                avatar: .initials
+            )
+        },
         saveUserSettings: { _ in }
     )
 }

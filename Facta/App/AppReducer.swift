@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 import ComposableArchitecture
 
 struct AppReducer: Reducer {
@@ -8,7 +9,7 @@ struct AppReducer: Reducer {
     @Dependency(\.localDataClient) var localDataClient
     @Dependency(\.persistenceClient) var persistenceClient
     @Dependency(\.notificationClient) var notificationClient
-    @Dependency(\.gameCenterClient) var gameCenterClient
+    // @Dependency(\.gameCenterClient) var gameCenterClient
     
     var body: some ReducerOf<Self> {
         Scope(state: \.onboarding, action: /AppAction.onboarding) {
@@ -151,131 +152,6 @@ struct HomeReducer: Reducer {
     }
 }
 
-// MARK: - QuizReducer
-struct QuizReducer: Reducer {
-    typealias State = QuizState
-    typealias Action = QuizAction
-    
-    @Dependency(\.localDataClient) var localDataClient
-    @Dependency(\.persistenceClient) var persistenceClient
-    @Dependency(\.continuousClock) var clock
-    
-    private enum QuizCancelID {
-        case timer
-    }
-    
-    var body: some ReducerOf<Self> {
-        Reduce { state, action in
-            switch action {
-            case .start(let mode):
-                state.quizMode = mode
-                state.mode = .playing
-                state.score = 0
-                state.streak = 0
-                state.i = 0
-                state.timeLeft = 15
-                state.questions = localDataClient.loadQuizQuestions(mode)
-                return .run { send in
-                    for await _ in clock.timer(interval: .seconds(1)) {
-                        await send(.tick)
-                    }
-                }
-                .cancellable(id: QuizCancelID.timer)
-                
-            case .questionsLoaded(let questions):
-                state.questions = questions
-                return .none
-                
-            case .tick:
-                if state.timeLeft > 0 {
-                    state.timeLeft -= 1
-                } else {
-                    state.mode = .result
-                    return .cancel(id: QuizCancelID.timer)
-                }
-                return .none
-                
-            case .answerIndex(let index):
-                if let question = state.questions.first(where: { $0.id == state.questions[state.i].id }) {
-                    if let correctIndex = question.correctIndex, index == correctIndex {
-                        state.score += 1
-                        state.streak += 1
-                    } else {
-                        state.streak = 0
-                    }
-                }
-                return .cancel(id: QuizCancelID.timer)
-                
-            case .answerBool(let answer):
-                if let question = state.questions.first(where: { $0.id == state.questions[state.i].id }) {
-                    if let correctAnswer = question.correctAnswer, answer == correctAnswer {
-                        state.score += 1
-                        state.streak += 1
-                    } else {
-                        state.streak = 0
-                    }
-                }
-                return .cancel(id: QuizCancelID.timer)
-                
-            case .answerText(let text):
-                if let question = state.questions.first(where: { $0.id == state.questions[state.i].id }) {
-                    if let correctText = question.correctText, text.lowercased() == correctText.lowercased() {
-                        state.score += 1
-                        state.streak += 1
-                    } else {
-                        state.streak = 0
-                    }
-                }
-                return .cancel(id: QuizCancelID.timer)
-                
-            case .next:
-                if state.i + 1 < state.questions.count {
-                    state.i += 1
-                    state.timeLeft = 15
-                    return .run { send in
-                        for await _ in clock.timer(interval: .seconds(1)) {
-                            await send(.tick)
-                        }
-                    }
-                    .cancellable(id: QuizCancelID.timer)
-                } else {
-                    state.mode = .result
-                    let result = QuizResult(
-                        id: UUID().uuidString,
-                        date: Date(),
-                        mode: state.quizMode ?? .recap,
-                        score: state.score,
-                        total: state.questions.count,
-                        bestStreak: state.streak
-                    )
-                    persistenceClient.saveQuizResult(result)
-                    state.history.append(result)
-                    return .cancel(id: QuizCancelID.timer)
-                }
-                
-            case .nextPlayer:
-                // Handle next player in challenge mode
-                return .none
-                
-            case .showHistory:
-                state.mode = .history
-                return .none
-                
-            case .backToOverview:
-                state.mode = .overview
-                return .cancel(id: QuizCancelID.timer)
-                
-            case .result(let result):
-                state.mode = .result
-                return .cancel(id: QuizCancelID.timer)
-                
-            case .challengeCompleted(let mode, let result):
-                state.mode = .result
-                return .cancel(id: QuizCancelID.timer)
-            }
-        }
-    }
-}
 
 // MARK: - FavoritesReducer
 struct FavoritesReducer: Reducer {
@@ -381,7 +257,7 @@ struct FriendsReducer: Reducer {
     typealias State = FriendsState
     typealias Action = FriendsAction
     
-    @Dependency(\.gameCenterClient) var gameCenterClient
+    // @Dependency(\.gameCenterClient) var gameCenterClient
     
     var body: some ReducerOf<Self> {
         Reduce { state, action in
