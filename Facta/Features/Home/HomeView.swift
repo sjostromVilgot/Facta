@@ -90,7 +90,7 @@ struct HomeView: View {
                                             },
                                             onNext: {
                                                 withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                                                    viewStore.send(.next)
+                                                    _ = viewStore.send(.next)
                                                 }
                                             },
                                             dragOffset: dragOffset
