@@ -10,6 +10,8 @@ struct FactCardView: View {
     let onNext: (() -> Void)?
     let dragOffset: CGFloat
     @State private var showingShare = false
+    @State private var heartAnimation = false
+    @State private var heartScale: CGFloat = 1.0
     
     init(fact: Fact, isSaved: Bool = false, onSave: @escaping () -> Void, onShare: @escaping () -> Void, onNext: (() -> Void)? = nil, dragOffset: CGFloat = 0) {
         self.fact = fact
@@ -53,13 +55,46 @@ struct FactCardView: View {
             
             // Actions
             HStack {
-                Button(action: onSave) {
+                Button(action: {
+                    // Haptic feedback
+                    let impactFeedback = UIImpactFeedbackGenerator(style: .light)
+                    impactFeedback.impactOccurred()
+                    
+                    // Heart animation
+                    withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+                        heartScale = 1.3
+                        heartAnimation = true
+                    }
+                    
+                    // Reset animation
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        withAnimation(.spring(response: 0.4, dampingFraction: 0.8)) {
+                            heartScale = 1.0
+                        }
+                    }
+                    
+                    // Reset animation flag
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        heartAnimation = false
+                    }
+                    
+                    onSave()
+                }) {
                     Label(isSaved ? "Sparad" : "Spara", systemImage: isSaved ? "heart.fill" : "heart")
                         .labelStyle(.titleAndIcon)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
                         .background(isSaved ? Color.red.opacity(0.2) : Color.clear)
                         .cornerRadius(8)
+                        .scaleEffect(heartScale)
+                        .overlay(
+                            // Pulse effect
+                            Circle()
+                                .stroke(Color.red, lineWidth: 2)
+                                .scaleEffect(heartAnimation ? 1.5 : 0.8)
+                                .opacity(heartAnimation ? 0 : 1)
+                                .animation(.easeOut(duration: 0.6), value: heartAnimation)
+                        )
                 }
                 .buttonStyle(CardButtonStyle())
                 .foregroundColor(isSaved ? .red : .primary)
@@ -98,7 +133,7 @@ struct FactCardView: View {
         .padding(UI.Padding.large)
         .background(cardBackground)
         .cornerRadius(UI.corner)
-        .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+        .shadow(color: .black.opacity(0.15), radius: 6, x: 0, y: 3)
         .overlay(
             RoundedRectangle(cornerRadius: UI.corner)
                 .stroke(

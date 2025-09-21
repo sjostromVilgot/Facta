@@ -11,7 +11,11 @@ struct QuizResultView: View {
                 
                 // Confetti effect for good scores
                 if shouldShowConfetti(score: viewStore.score, total: viewStore.questions.count) {
-                    ConfettiView()
+                    ConfettiView(
+                        colors: [.green, .blue, .purple, .yellow, .orange, .pink],
+                        duration: 2.5,
+                        intensity: 60
+                    )
                 }
             }
         }
@@ -21,19 +25,25 @@ struct QuizResultView: View {
         VStack(spacing: UI.Spacing.large) {
             Spacer()
             
-            // Result Icon
-            Image(systemName: resultIcon(score: viewStore.score, total: viewStore.questions.count))
-                .font(.system(size: 80))
-                .foregroundColor(resultColor(score: viewStore.score, total: viewStore.questions.count))
-        
-            // Result Title
-            Text(resultTitle(score: viewStore.score, total: viewStore.questions.count))
-                .font(Typography.largeTitle)
-                .foregroundColor(.primary)
-                .multilineTextAlignment(.center)
+            if viewStore.quizMode == .challenge {
+                // Challenge Results
+                challengeResultsView(viewStore: viewStore)
+            } else {
+                // Regular Results
+                // Result Icon
+                Image(systemName: resultIcon(score: viewStore.score, total: viewStore.questions.count))
+                    .font(.system(size: 80))
+                    .foregroundColor(resultColor(score: viewStore.score, total: viewStore.questions.count))
             
-            // Score Details
-            scoreDetailsView(viewStore: viewStore)
+                // Result Title
+                Text(resultTitle(score: viewStore.score, total: viewStore.questions.count))
+                    .font(Typography.largeTitle)
+                    .foregroundColor(.primary)
+                    .multilineTextAlignment(.center)
+                
+                // Score Details
+                scoreDetailsView(viewStore: viewStore)
+            }
             
             // Action Buttons
             actionButtonsView(viewStore: viewStore)
@@ -95,11 +105,103 @@ struct QuizResultView: View {
             }
             .buttonStyle(PrimaryButtonStyle())
             
+            // Share Button
+            ShareButton(
+                shareText: shareText(score: viewStore.score, total: viewStore.questions.count, mode: viewStore.quizMode)
+            )
+            
             Button("Tillbaka till quiz-meny") {
                 viewStore.send(.backToOverview)
             }
             .buttonStyle(SecondaryButtonStyle())
         }
+    }
+    
+    private func challengeResultsView(viewStore: ViewStore<QuizState, QuizAction>) -> some View {
+        VStack(spacing: UI.Spacing.large) {
+            // Challenge Icon
+            Image(systemName: "person.2.fill")
+                .font(.system(size: 80))
+                .foregroundColor(.purple)
+            
+            // Challenge Title
+            Text("Utmaning slutförd!")
+                .font(Typography.largeTitle)
+                .foregroundColor(.primary)
+                .multilineTextAlignment(.center)
+            
+            // Score Comparison
+            VStack(spacing: UI.Spacing.medium) {
+                HStack {
+                    VStack {
+                        Text("Du")
+                            .font(Typography.headline)
+                            .foregroundColor(.primary)
+                        Text("\(viewStore.playerOneScore)/\(viewStore.questions.count)")
+                            .font(Typography.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.blue)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.blue.opacity(0.1))
+                    .cornerRadius(UI.corner)
+                    
+                    Text("VS")
+                        .font(Typography.headline)
+                        .foregroundColor(.secondary)
+                        .padding(.horizontal)
+                    
+                    VStack {
+                        Text("Vän")
+                            .font(Typography.headline)
+                            .foregroundColor(.primary)
+                        Text("\(viewStore.playerTwoScore)/\(viewStore.questions.count)")
+                            .font(Typography.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.purple)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color.purple.opacity(0.1))
+                    .cornerRadius(UI.corner)
+                }
+                
+                // Winner Announcement
+                VStack(spacing: UI.Spacing.small) {
+                    if viewStore.playerOneScore > viewStore.playerTwoScore {
+                        Text("Du vann! 🎉")
+                            .font(Typography.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.green)
+                    } else if viewStore.playerTwoScore > viewStore.playerOneScore {
+                        Text("Du förlorade")
+                            .font(Typography.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.red)
+                    } else {
+                        Text("Oavgjort!")
+                            .font(Typography.title2)
+                            .fontWeight(.bold)
+                            .foregroundColor(.orange)
+                    }
+                    
+                    Text("Bra jobbat båda!")
+                        .font(Typography.body)
+                        .foregroundColor(.secondary)
+                }
+                .padding()
+                .background(Color.muted)
+                .cornerRadius(UI.corner)
+            }
+        }
+    }
+    
+    private func shareText(score: Int, total: Int, mode: QuizMode?) -> String {
+        let percentage = Int((Double(score) / Double(total)) * 100)
+        let modeText = mode?.displayName ?? "quiz"
+        
+        return "Jag fick \(percentage)% rätt på en \(modeText) i Facta! 🧠✨\n\nLadda ner Facta för att testa dina kunskaper också!"
     }
     
     private func resultIcon(score: Int, total: Int) -> String {
@@ -142,68 +244,3 @@ struct QuizResultView: View {
 }
 
 // MARK: - ConfettiView
-struct ConfettiView: View {
-    @State private var confettiPieces: [ConfettiPiece] = []
-    @State private var isAnimating = false
-    
-    let colors: [Color] = [.red, .blue, .green, .yellow, .orange, .purple, .pink]
-    let emojis: [String] = ["🎉", "✨", "⭐", "🌟", "💫", "🎊", "🎈"]
-    
-    var body: some View {
-        ZStack {
-            ForEach(confettiPieces, id: \.id) { piece in
-                Text(piece.emoji)
-                    .font(.system(size: piece.size))
-                    .position(x: piece.x, y: piece.y)
-                    .rotationEffect(.degrees(piece.rotation))
-                    .opacity(piece.opacity)
-            }
-        }
-        .onAppear {
-            startConfetti()
-        }
-    }
-    
-    private func startConfetti() {
-        guard !isAnimating else { return }
-        isAnimating = true
-        
-        // Create confetti pieces
-        confettiPieces = (0..<50).map { _ in
-            ConfettiPiece(
-                id: UUID(),
-                emoji: emojis.randomElement() ?? "🎉",
-                x: Double.random(in: 0...UIScreen.main.bounds.width),
-                y: -50,
-                size: Double.random(in: 20...40),
-                rotation: Double.random(in: 0...360),
-                opacity: 1.0
-            )
-        }
-        
-        // Animate confetti falling
-        withAnimation(.easeOut(duration: 3.0)) {
-            for i in confettiPieces.indices {
-                confettiPieces[i].y = UIScreen.main.bounds.height + 100
-                confettiPieces[i].rotation += 360
-                confettiPieces[i].opacity = 0.0
-            }
-        }
-        
-        // Reset after animation
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            confettiPieces = []
-            isAnimating = false
-        }
-    }
-}
-
-struct ConfettiPiece {
-    let id: UUID
-    let emoji: String
-    var x: Double
-    var y: Double
-    let size: Double
-    var rotation: Double
-    var opacity: Double
-}

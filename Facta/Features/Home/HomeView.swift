@@ -31,6 +31,9 @@ struct HomeView: View {
                                 }
                                 
                                 Spacer()
+                                
+                                // Streak Indicator
+                                StreakIndicatorView(streakDays: viewStore.streakDays)
                             }
                             
                             FactCardView(
@@ -43,6 +46,8 @@ struct HomeView: View {
                                     viewStore.send(.share(dailyFact))
                                 }
                             )
+                            .transition(.opacity.combined(with: .scale(scale: 0.95)))
+                            .animation(.easeInOut(duration: 0.5), value: dailyFact.id)
                             .onAppear {
                                 viewStore.send(.markRead(dailyFact))
                             }
@@ -70,27 +75,34 @@ struct HomeView: View {
                                 .foregroundColor(.primary)
                             }
                             
-                            // Discovery Card with Swipe
+                            // Discovery Card with Swipe and Animation
                             ZStack {
                                 if viewStore.index < viewStore.discovery.count {
-            ZStack {
-                FactCardView(
-                    fact: viewStore.discovery[viewStore.index],
-                    isSaved: viewStore.favorites.contains(viewStore.discovery[viewStore.index].id),
-                    onSave: {
-                        viewStore.send(.save(viewStore.discovery[viewStore.index]))
-                    },
-                    onShare: {
-                        viewStore.send(.share(viewStore.discovery[viewStore.index]))
-                    },
-                    onNext: {
-                        viewStore.send(.next)
-                    },
-                    dragOffset: dragOffset
-                )
-                .offset(x: dragOffset)
-                .rotationEffect(.degrees(Double(dragOffset) * 0.03))
-                .opacity(1 - min(abs(dragOffset) / 500.0, 0.3))
+                                    ZStack {
+                                        FactCardView(
+                                            fact: viewStore.discovery[viewStore.index],
+                                            isSaved: viewStore.favorites.contains(viewStore.discovery[viewStore.index].id),
+                                            onSave: {
+                                                viewStore.send(.save(viewStore.discovery[viewStore.index]))
+                                            },
+                                            onShare: {
+                                                viewStore.send(.share(viewStore.discovery[viewStore.index]))
+                                            },
+                                            onNext: {
+                                                withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                                                    viewStore.send(.next)
+                                                }
+                                            },
+                                            dragOffset: dragOffset
+                                        )
+                                        .offset(x: dragOffset)
+                                        .rotationEffect(.degrees(Double(dragOffset) * 0.03))
+                                        .opacity(1 - min(abs(dragOffset) / 500.0, 0.3))
+                                        .transition(.asymmetric(
+                                            insertion: .move(edge: .trailing).combined(with: .opacity),
+                                            removal: .move(edge: .leading).combined(with: .opacity)
+                                        ))
+                                        .id(viewStore.index)
                                         
                                         // Swipe feedback overlays
                                         if dragOffset > 50 {

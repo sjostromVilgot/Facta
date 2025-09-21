@@ -10,6 +10,32 @@ struct PersistenceClient {
     var markRead: (String) -> Void
     var loadQuizHistory: () -> [QuizResult]
     var saveQuizResult: (QuizResult) -> Void
+    var loadLastActiveDate: () -> Date?
+    var saveLastActiveDate: (Date) -> Void
+    var loadStreakData: () -> StreakData
+    var saveStreakData: (StreakData) -> Void
+    var saveUserSettings: (UserSettings) -> Void
+}
+
+// MARK: - Streak Data Model
+struct StreakData: Codable, Equatable {
+    var currentStreak: Int
+    var longestStreak: Int
+    var lastActiveDate: Date
+    var streakStartDate: Date?
+    var dailyRewardsClaimed: [String] // Array of dates (YYYY-MM-DD) when daily reward was claimed
+    var streakMilestones: [Int] // Array of streak lengths that have been rewarded
+}
+
+extension StreakData {
+    static let empty = StreakData(
+        currentStreak: 0,
+        longestStreak: 0,
+        lastActiveDate: Date.distantPast,
+        streakStartDate: nil,
+        dailyRewardsClaimed: [],
+        streakMilestones: []
+    )
 }
 
 extension PersistenceClient: DependencyKey {
@@ -88,6 +114,29 @@ extension PersistenceClient: DependencyKey {
             if let data = try? JSONEncoder().encode(history) {
                 UserDefaults.standard.set(data, forKey: "quizHistory")
             }
+        },
+        loadLastActiveDate: {
+            UserDefaults.standard.object(forKey: "lastActiveDate") as? Date
+        },
+        saveLastActiveDate: { date in
+            UserDefaults.standard.set(date, forKey: "lastActiveDate")
+        },
+        loadStreakData: {
+            guard let data = UserDefaults.standard.data(forKey: "streakData"),
+                  let streakData = try? JSONDecoder().decode(StreakData.self, from: data) else {
+                return StreakData.empty
+            }
+            return streakData
+        },
+        saveStreakData: { streakData in
+            if let data = try? JSONEncoder().encode(streakData) {
+                UserDefaults.standard.set(data, forKey: "streakData")
+            }
+        },
+        saveUserSettings: { settings in
+            if let data = try? JSONEncoder().encode(settings) {
+                UserDefaults.standard.set(data, forKey: "userSettings")
+            }
         }
     )
     
@@ -98,7 +147,12 @@ extension PersistenceClient: DependencyKey {
         loadReadFacts: { [:] },
         markRead: { _ in },
         loadQuizHistory: { [] },
-        saveQuizResult: { _ in }
+        saveQuizResult: { _ in },
+        loadLastActiveDate: { nil },
+        saveLastActiveDate: { _ in },
+        loadStreakData: { StreakData.empty },
+        saveStreakData: { _ in },
+        saveUserSettings: { _ in }
     )
 }
 

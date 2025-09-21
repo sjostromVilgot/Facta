@@ -11,7 +11,6 @@
 		989ECF172E7F466B00F67979 /* ReadyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF62E7F466B00F67979 /* ReadyView.swift */; };
 		989ECF182E7F466B00F67979 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFF2E7F466B00F67979 /* SettingsView.swift */; };
 		989ECF192E7F466B00F67979 /* QuizHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF032E7F466B00F67979 /* QuizHistoryView.swift */; };
-		989ECF1A2E7F466B00F67979 /* BadgesGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFC2E7F466B00F67979 /* BadgesGridView.swift */; };
 		989ECF1B2E7F466B00F67979 /* QuizFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF012E7F466B00F67979 /* QuizFeature.swift */; };
 		989ECF1C2E7F466B00F67979 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFA2E7F466B00F67979 /* OnboardingView.swift */; };
 		989ECF1D2E7F466B00F67979 /* FactaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEE72E7F466B00F67979 /* FactaApp.swift */; };
@@ -36,6 +35,7 @@
 		989ECF312E7F466B00F67979 /* HomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF02E7F466B00F67979 /* HomeFeature.swift */; };
 		989ECF322E7F466B00F67979 /* PersistenceClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF112E7F466B00F67979 /* PersistenceClient.swift */; };
 		989ECF332E7F466B00F67979 /* QuizGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF022E7F466B00F67979 /* QuizGameView.swift */; };
+		989ECF3C2E7F466B00F67979 /* QuizReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF3D2E7F466B00F67979 /* QuizReducer.swift */; };
 		989ECF342E7F466B00F67979 /* ProfileFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEFD2E7F466B00F67979 /* ProfileFeature.swift */; };
 		989ECF352E7F466B00F67979 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF092E7F466B00F67979 /* Badge.swift */; };
 		989ECF362E7F466B00F67979 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF92E7F466B00F67979 /* OnboardingFeature.swift */; };
@@ -66,12 +66,12 @@
 		989ECEF72E7F466B00F67979 /* SwipeHintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeHintView.swift; sourceTree = "<group>"; };
 		989ECEF92E7F466B00F67979 /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
 		989ECEFA2E7F466B00F67979 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		989ECEFC2E7F466B00F67979 /* BadgesGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgesGridView.swift; sourceTree = "<group>"; };
 		989ECEFD2E7F466B00F67979 /* ProfileFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFeature.swift; sourceTree = "<group>"; };
 		989ECEFE2E7F466B00F67979 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		989ECEFF2E7F466B00F67979 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		989ECF012E7F466B00F67979 /* QuizFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizFeature.swift; sourceTree = "<group>"; };
 		989ECF022E7F466B00F67979 /* QuizGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGameView.swift; sourceTree = "<group>"; };
+		989ECF3D2E7F466B00F67979 /* QuizReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizReducer.swift; sourceTree = "<group>"; };
 		989ECF032E7F466B00F67979 /* QuizHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHistoryView.swift; sourceTree = "<group>"; };
 		989ECF042E7F466B00F67979 /* QuizOverviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizOverviewView.swift; sourceTree = "<group>"; };
 		989ECF052E7F466B00F67979 /* QuizResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultView.swift; sourceTree = "<group>"; };
@@ -293,7 +293,6 @@
 		989ECF002E7F466B00F67979 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				989ECEFC2E7F466B00F67979 /* BadgesGridView.swift */,
 				989ECEFD2E7F466B00F67979 /* ProfileFeature.swift */,
 				989ECEFE2E7F466B00F67979 /* ProfileView.swift */,
 				989ECEFF2E7F466B00F67979 /* SettingsView.swift */,
@@ -306,6 +305,7 @@
 			children = (
 				989ECF012E7F466B00F67979 /* QuizFeature.swift */,
 				989ECF022E7F466B00F67979 /* QuizGameView.swift */,
+				989ECF3D2E7F466B00F67979 /* QuizReducer.swift */,
 				989ECF032E7F466B00F67979 /* QuizHistoryView.swift */,
 				989ECF042E7F466B00F67979 /* QuizOverviewView.swift */,
 				989ECF052E7F466B00F67979 /* QuizResultView.swift */,
@@ -462,7 +462,6 @@
 				989ECF172E7F466B00F67979 /* ReadyView.swift in Sources */,
 				989ECF182E7F466B00F67979 /* SettingsView.swift in Sources */,
 				989ECF192E7F466B00F67979 /* QuizHistoryView.swift in Sources */,
-				989ECF1A2E7F466B00F67979 /* BadgesGridView.swift in Sources */,
 				989ECF1B2E7F466B00F67979 /* QuizFeature.swift in Sources */,
 				989ECF1C2E7F466B00F67979 /* OnboardingView.swift in Sources */,
 				989ECF1D2E7F466B00F67979 /* FactaApp.swift in Sources */,
@@ -487,6 +486,7 @@
 				989ECF312E7F466B00F67979 /* HomeFeature.swift in Sources */,
 				989ECF322E7F466B00F67979 /* PersistenceClient.swift in Sources */,
 				989ECF332E7F466B00F67979 /* QuizGameView.swift in Sources */,
+				989ECF3C2E7F466B00F67979 /* QuizReducer.swift in Sources */,
 				989ECF342E7F466B00F67979 /* ProfileFeature.swift in Sources */,
 				989ECF352E7F466B00F67979 /* Badge.swift in Sources */,
 				989ECF362E7F466B00F67979 /* OnboardingFeature.swift in Sources */,

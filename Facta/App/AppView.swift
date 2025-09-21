@@ -41,7 +41,10 @@ struct MainTabView: View {
                     store: store.scope(
                         state: \.quiz,
                         action: AppAction.quiz
-                    )
+                    ),
+                    onQuickMatch: {
+                        // This will be handled by the parent view
+                    }
                 )
                 .tabItem {
                     Image(systemName: "questionmark.circle.fill")
@@ -59,6 +62,28 @@ struct MainTabView: View {
                     Text(NSLocalizedString("Favoriter", comment: "Favorites tab"))
                 }
 
+                ChallengesView(
+                    store: store.scope(
+                        state: \.challenges,
+                        action: AppAction.challenges
+                    )
+                )
+                .tabItem {
+                    Image(systemName: "flag.fill")
+                    Text(NSLocalizedString("Utmaningar", comment: "Challenges tab"))
+                }
+
+                FriendsView(
+                    store: store.scope(
+                        state: \.friends,
+                        action: AppAction.friends
+                    )
+                )
+                .tabItem {
+                    Image(systemName: "person.2.fill")
+                    Text(NSLocalizedString("Vänner", comment: "Friends tab"))
+                }
+
                 ProfileView(
                     store: store.scope(
                         state: \.profile,
@@ -71,6 +96,7 @@ struct MainTabView: View {
                 }
             }
             .preferredColorScheme(themeColorScheme(settingsViewStore.state.theme))
+            .accentColor(themeAccentColor(settingsViewStore.state.theme))
             .environment(\.locale, .init(identifier: settingsViewStore.state.language))
         }
     }
@@ -83,6 +109,21 @@ struct MainTabView: View {
             return .dark
         case .system:
             return nil
+        case .mint, .ocean, .sunset:
+            return .light // Custom themes use light mode as base
+        }
+    }
+    
+    private func themeAccentColor(_ theme: ThemeChoice) -> Color? {
+        switch theme {
+        case .mint:
+            return .mintAccent
+        case .ocean:
+            return .oceanAccent
+        case .sunset:
+            return .sunsetAccent
+        default:
+            return nil // Use system default
         }
     }
 }

@@ -7,6 +7,11 @@ struct DesignTokens {
     static let secondary = Color(hex: "#00D1B2")
     static let accent = Color(hex: "#FFC107")
     
+    // Theme Colors
+    static let mintAccent = Color(hex: "#3EB489")
+    static let oceanAccent = Color(hex: "#4D9DE0")
+    static let sunsetAccent = Color(hex: "#FF6B6B")
+    
     // Background Colors
     static let background = Color(.systemBackground)
     static let backgroundDark = Color.black
@@ -29,6 +34,11 @@ extension Color {
     static let primary = DesignTokens.primary
     static let secondary = DesignTokens.secondary
     static let accent = DesignTokens.accent
+    
+    // Theme Colors
+    static let mintAccent = DesignTokens.mintAccent
+    static let oceanAccent = DesignTokens.oceanAccent
+    static let sunsetAccent = DesignTokens.sunsetAccent
     
     // Background Colors
     static let background = DesignTokens.background
@@ -112,17 +122,18 @@ struct UI {
     
     // Padding
     struct Padding {
-        static let small: CGFloat = 8.0
-        static let medium: CGFloat = 16.0
-        static let large: CGFloat = 24.0
+        static let small: CGFloat = 12.0
+        static let medium: CGFloat = 20.0
+        static let large: CGFloat = 32.0
+        static let extraLarge: CGFloat = 40.0
     }
     
     // Spacing
     struct Spacing {
-        static let small: CGFloat = 8.0
-        static let medium: CGFloat = 16.0
-        static let large: CGFloat = 24.0
-        static let extraLarge: CGFloat = 32.0
+        static let small: CGFloat = 12.0
+        static let medium: CGFloat = 20.0
+        static let large: CGFloat = 32.0
+        static let extraLarge: CGFloat = 40.0
     }
     
     // Sizes

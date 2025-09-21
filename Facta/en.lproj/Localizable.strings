@@ -185,6 +185,81 @@
 "Stäng" = "Close";
 "Integritetspolicy" = "Privacy Policy";
 
+// MARK: - Friends
+"Vänner" = "Friends";
+"Inga vänner än" = "No friends yet";
+"Lägg till vänner för att utmana dem i quiz!" = "Add friends to challenge them in quizzes!";
+"Lägg till vän" = "Add friend";
+"Ange vännens namn" = "Enter friend's name";
+"Utmana" = "Challenge";
+"Ta bort vän" = "Remove friend";
+"Namn" = "Name";
+"Lägg till" = "Add";
+
+// MARK: - Quick Challenge
+"Snabb utmaning" = "Quick Challenge";
+"Tävla mot en slumpmässig motståndare" = "Compete against a random opponent";
+"Hittar motståndare..." = "Finding opponent...";
+"Motståndare hittad!" = "Opponent found!";
+"Du vann!" = "You won!";
+"Du förlorade!" = "You lost!";
+"Oavgjort!" = "It's a tie!";
+"Motståndare" = "Opponent";
+"Poäng" = "Score";
+"Du" = "You";
+
+// MARK: - Level System
+"Nivå" = "Level";
+"Nykomling" = "Beginner";
+"Upptäckare" = "Explorer";
+"Kunskapsjaktare" = "Knowledge Seeker";
+"Faktaexpert" = "Fact Expert";
+"Mästare" = "Master";
+"Legendar" = "Legend";
+"Mytisk" = "Mythic";
+"till nästa" = "to next";
+"Maximal nivå uppnådd!" = "Maximum level reached!";
+"XP" = "XP";
+
+// MARK: - Challenges
+"Dagens utmaning" = "Daily Challenge";
+"Veckans utmaning" = "Weekly Challenge";
+"3 frågor • Nya varje dag" = "3 questions • New every day";
+"10 frågor • Veckovis" = "10 questions • Weekly";
+"+50 XP bonus" = "+50 XP bonus";
+"+200 XP bonus" = "+200 XP bonus";
+"dagar kvar" = "days left";
+"Utmaning slutförd!" = "Challenge completed!";
+"Perfekt resultat!" = "Perfect score!";
+"Extra bonus XP!" = "Extra bonus XP!";
+
+// MARK: - Streak System
+"Börja din streak!" = "Start your streak!";
+"Bra start!" = "Great start!";
+"Håll det igång!" = "Keep it up!";
+"Fantastiskt!" = "Fantastic!";
+"Imponerande!" = "Impressive!";
+"Legendarisk!" = "Legendary!";
+"Mytisk!" = "Mythic!";
+"Oöverträffad!" = "Unmatched!";
+"Streak bonus" = "Streak bonus";
+"Daglig belöning" = "Daily reward";
+"Milestone bonus" = "Milestone bonus";
+"Streak slutförd!" = "Streak completed!";
+"Ny streak-milestone!" = "New streak milestone!";
+
+// MARK: - Celebrations
+"Nivå upp!" = "Level up!";
+"Badge låst upp!" = "Badge unlocked!";
+"Perfekt resultat!" = "Perfect score!";
+"Nytt rekord!" = "New record!";
+"Streak-milestone!" = "Streak milestone!";
+"Du har gått upp en nivå!" = "You've leveled up!";
+"Grattis till din nya badge!" = "Congratulations on your new badge!";
+"100% rätt - fantastiskt!" = "100% correct - fantastic!";
+"Du slog ditt tidigare rekord!" = "You beat your previous record!";
+"Imponerande streak!" = "Impressive streak!";
+
 // MARK: - Time and Counters
 "s" = "s";
 "dagar" = "days";

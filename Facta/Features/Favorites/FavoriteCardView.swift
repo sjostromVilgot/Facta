@@ -75,6 +75,7 @@ struct FavoriteCardView: View {
             .padding()
             .background(Color.muted.opacity(0.3))
             .cornerRadius(UI.corner)
+            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
         } else {
             // Grid mode: VStack layout
             VStack(alignment: .leading, spacing: UI.Spacing.small) {
@@ -143,6 +144,7 @@ struct FavoriteCardView: View {
             .padding()
             .background(Color.muted.opacity(0.3))
             .cornerRadius(UI.corner)
+            .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
         }
     }
     

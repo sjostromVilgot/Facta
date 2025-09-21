@@ -7,6 +7,8 @@ enum AppAction {
     case quiz(QuizAction)
     case favorites(FavoritesAction)
     case profile(ProfileAction)
+    case friends(FriendsAction)
+    case challenges(ChallengesAction)
     case setOnboardingComplete(Bool)
 }
 
@@ -38,9 +40,12 @@ enum QuizAction {
     case tick
     case answerIndex(Int?)
     case answerBool(Bool)
+    case answerText(String)
     case next
+    case nextPlayer
     case showHistory
     case backToOverview
+    case challengeCompleted(QuizMode, QuizResult)
 }
 
 enum FavoritesAction {
@@ -57,4 +62,32 @@ enum ProfileAction {
     case toggleQuizReminder(Bool)
     case setTheme(ThemeChoice)
     case setLanguage(String)
+    case setDisplayName(String)
+    case setAvatar(AvatarData)
+    case updateStreak
+    case acknowledgeLevelUp
+    case acknowledgeChallengeComplete
+}
+
+enum FriendsAction {
+    case load
+    case addFriend(String)
+    case removeFriend(UUID)
+    case challengeFriend(UUID)
+    case setShowingAddFriend(Bool)
+    case setNewFriendName(String)
+    case startQuizWithFriend(UUID)
+    case quickMatch
+    case opponentFound(Opponent)
+    case matchStarted(Match)
+    case matchCompleted(MatchResult)
+}
+
+enum ChallengesAction: Equatable {
+    case load
+    case markComplete(UUID)
+    case incrementProgress(UUID, Int)
+    case resetDailyChallenges
+    case resetWeeklyChallenges
+    case acknowledgeChallengeComplete
 }

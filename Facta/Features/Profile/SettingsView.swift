@@ -9,6 +9,29 @@ struct SettingsView: View {
         NavigationView {
             WithViewStore(store, observe: { $0 }) { viewStore in
                 List {
+                    // Profile Section
+                    Section("Profil") {
+                        HStack {
+                            Text("Namn")
+                            Spacer()
+                            TextField("Ditt namn", text: viewStore.binding(
+                                get: \.settings.displayName,
+                                send: ProfileAction.setDisplayName
+                            ))
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                            .frame(width: 150)
+                        }
+                        
+                        NavigationLink(destination: AvatarSelectionView(store: store)) {
+                            HStack {
+                                Text("Avatar")
+                                Spacer()
+                                AvatarView(avatarData: viewStore.avatarData, displayName: viewStore.settings.displayName)
+                                    .frame(width: 30, height: 30)
+                            }
+                        }
+                    }
+                    
                     // Notifications Section
                     Section("Notiser") {
                         Toggle("Dagens fakta (09:00)", isOn: viewStore.binding(
@@ -31,8 +54,11 @@ struct SettingsView: View {
                             Text("Ljust").tag(ThemeChoice.light)
                             Text("Mörkt").tag(ThemeChoice.dark)
                             Text("System").tag(ThemeChoice.system)
+                            Text("Mint").tag(ThemeChoice.mint)
+                            Text("Ocean").tag(ThemeChoice.ocean)
+                            Text("Sunset").tag(ThemeChoice.sunset)
                         }
-                        .pickerStyle(SegmentedPickerStyle())
+                        .pickerStyle(MenuPickerStyle())
                     }
                     
                     // Language Section
