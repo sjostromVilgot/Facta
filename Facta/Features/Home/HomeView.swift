@@ -2,7 +2,7 @@ import SwiftUI
 import ComposableArchitecture
 
 struct HomeView: View {
-    let store: StoreOf<HomeReducer>
+    let store: Store<HomeState, HomeAction>
     @State private var dragOffset: CGFloat = 0
     
     var body: some View {

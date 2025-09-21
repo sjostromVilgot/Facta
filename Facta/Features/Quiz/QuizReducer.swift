@@ -92,7 +92,64 @@ struct QuizReducer: Reducer {
                 state.mode = .overview
                 return .cancel(id: QuizCancelID.timer)
                 
-            case .result:
+            case .questionsLoaded(let questions):
+                state.questions = questions
+                return .none
+                
+            case .answerIndex(let index):
+                guard state.i < state.questions.count else { return .none }
+                let question = state.questions[state.i]
+                if let correctIndex = question.correctIndex, index == correctIndex {
+                    state.score += 1
+                    state.streak += 1
+                } else {
+                    state.streak = 0
+                }
+                return .cancel(id: QuizCancelID.timer)
+                
+            case .answerBool(let answer):
+                guard state.i < state.questions.count else { return .none }
+                let question = state.questions[state.i]
+                if let correctAnswer = question.correctAnswer, answer == correctAnswer {
+                    state.score += 1
+                    state.streak += 1
+                } else {
+                    state.streak = 0
+                }
+                return .cancel(id: QuizCancelID.timer)
+                
+            case .answerText(let text):
+                guard state.i < state.questions.count else { return .none }
+                let question = state.questions[state.i]
+                if let correctText = question.correctText, text.lowercased() == correctText.lowercased() {
+                    state.score += 1
+                    state.streak += 1
+                } else {
+                    state.streak = 0
+                }
+                return .cancel(id: QuizCancelID.timer)
+                
+            case .nextPlayer:
+                // Handle next player in challenge mode
+                if state.quizMode == .challenge && state.challengeStage == .player1 {
+                    state.playerOneScore = state.score
+                    state.challengeStage = .player2
+                    state.i = 0
+                    state.score = 0
+                    state.streak = 0
+                    state.timeLeft = 15
+                }
+                return .none
+                
+            case .showHistory:
+                state.mode = .history
+                return .none
+                
+            case .result(let result):
+                state.mode = .result
+                return .cancel(id: QuizCancelID.timer)
+                
+            case .challengeCompleted(let mode, let result):
                 state.mode = .result
                 return .cancel(id: QuizCancelID.timer)
             }

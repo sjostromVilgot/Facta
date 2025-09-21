@@ -154,7 +154,7 @@ struct FavoritesView: View {
                                         }
                                         
                                         Button("Ta bort från favoriter") {
-                                            viewStore.send(.remove(fact.id))
+                                            viewStore.send(.remove(fact))
                                         }
                                     }
                             }
@@ -170,7 +170,7 @@ struct FavoritesView: View {
                                         }
                                         
                                         Button("Ta bort från favoriter") {
-                                            viewStore.send(.remove(fact.id))
+                                            viewStore.send(.remove(fact))
                                         }
                                     }
                             }
