@@ -40,6 +40,7 @@
 		989ECF352E7F466B00F67979 /* Badge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF092E7F466B00F67979 /* Badge.swift */; };
 		989ECF362E7F466B00F67979 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF92E7F466B00F67979 /* OnboardingFeature.swift */; };
 		989ECF372E7F466B00F67979 /* DesignTokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEE92E7F466B00F67979 /* DesignTokens.swift */; };
+		989ECF4F2E7F466B00F67979 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF502E7F466B00F67979 /* ButtonStyles.swift */; };
 		989ECF382E7F466B00F67979 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF0C2E7F466B00F67979 /* User.swift */; };
 		989ECF3E2E7F466B00F67979 /* StreakData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF3F2E7F466B00F67979 /* StreakData.swift */; };
 		989ECF392E7F466B00F67979 /* SwipeHintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECEF72E7F466B00F67979 /* SwipeHintView.swift */; };
@@ -60,6 +61,7 @@
 		989ECEE62E7F466B00F67979 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		989ECEE72E7F466B00F67979 /* FactaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactaApp.swift; sourceTree = "<group>"; };
 		989ECEE92E7F466B00F67979 /* DesignTokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignTokens.swift; sourceTree = "<group>"; };
+		989ECF502E7F466B00F67979 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		989ECEEB2E7F466B00F67979 /* FavoriteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCardView.swift; sourceTree = "<group>"; };
 		989ECEEC2E7F466B00F67979 /* FavoritesFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesFeature.swift; sourceTree = "<group>"; };
 		989ECEED2E7F466B00F67979 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 		989ECEEA2E7F466B00F67979 /* Design */ = {
 			isa = PBXGroup;
 			children = (
+				989ECF502E7F466B00F67979 /* ButtonStyles.swift */,
 				989ECEE92E7F466B00F67979 /* DesignTokens.swift */,
 			);
 			path = Design;
@@ -536,6 +539,7 @@
 				989ECF352E7F466B00F67979 /* Badge.swift in Sources */,
 				989ECF362E7F466B00F67979 /* OnboardingFeature.swift in Sources */,
 				989ECF372E7F466B00F67979 /* DesignTokens.swift in Sources */,
+				989ECF4F2E7F466B00F67979 /* ButtonStyles.swift in Sources */,
 				989ECF382E7F466B00F67979 /* User.swift in Sources */,
 				989ECF3E2E7F466B00F67979 /* StreakData.swift in Sources */,
 				989ECF392E7F466B00F67979 /* SwipeHintView.swift in Sources */,
