@@ -95,7 +95,7 @@ struct HomeView: View {
                                         // Swipe feedback overlays
                                         if dragOffset > 50 {
                                             Text("Spara")
-                                                .font(.caption)
+                                                .font(Typography.caption)
                                                 .fontWeight(.semibold)
                                                 .foregroundColor(.white)
                                                 .padding(.horizontal, 12)
@@ -105,7 +105,7 @@ struct HomeView: View {
                                                 .position(x: 280, y: 40)
                                         } else if dragOffset < -50 {
                                             Text("Nästa")
-                                                .font(.caption)
+                                                .font(Typography.caption)
                                                 .fontWeight(.semibold)
                                                 .foregroundColor(.white)
                                                 .padding(.horizontal, 12)
@@ -158,7 +158,7 @@ struct HomeView: View {
                         VStack {
                             ProgressView()
                             Text("Laddar fakta...")
-                                .font(.caption)
+                                .font(Typography.caption)
                                 .foregroundColor(.secondary)
                         }
                         .padding()
@@ -172,11 +172,11 @@ struct HomeView: View {
                                 .foregroundColor(.muted)
                             
                             Text("Inga fakta tillgängliga")
-                                .font(.headline)
+                                .font(Typography.headline)
                                 .foregroundColor(.secondary)
                             
                             Text("Kontrollera din internetanslutning och försök igen")
-                                .font(.caption)
+                                .font(Typography.caption)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.center)
                         }
@@ -195,7 +195,7 @@ struct HomeView: View {
 struct SecondaryButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.caption)
+            .font(Typography.caption)
             .padding(.horizontal, UI.Padding.medium)
             .padding(.vertical, UI.Padding.small)
             .background(Color.muted)

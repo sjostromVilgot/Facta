@@ -16,7 +16,7 @@ struct NotificationSettingsView: View {
                         .multilineTextAlignment(.center)
                     
                     Text("Ställ in dina notifieringar för att få det bästa av Facta")
-                        .font(.body)
+                        .font(Typography.body)
                         .foregroundColor(.mutedForeground)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
@@ -46,7 +46,7 @@ struct NotificationSettingsView: View {
                                 .foregroundColor(.adaptiveForeground)
                             
                             Text("Få en ny fascinerande fakta varje dag kl 09:00")
-                                .font(.caption)
+                                .font(Typography.caption)
                                 .foregroundColor(.mutedForeground)
                         }
                         
@@ -70,7 +70,7 @@ struct NotificationSettingsView: View {
                                 .foregroundColor(.adaptiveForeground)
                             
                             Text("Få påminnelser om att spela quiz för att utveckla dina kunskaper")
-                                .font(.caption)
+                                .font(Typography.caption)
                                 .foregroundColor(.mutedForeground)
                         }
                         

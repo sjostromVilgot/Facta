@@ -13,7 +13,7 @@ struct SwipeHintView: View {
             
             Text("Svep för mer")
                 .font(Typography.largeTitle)
-                .foregroundColor(.primary)
+                .foregroundColor(.adaptiveForeground)
                 .multilineTextAlignment(.center)
             
             // Animated card that slides right
@@ -65,8 +65,8 @@ struct SwipeHintView: View {
                     .font(.headline)
                     .opacity(showArrow ? 1.0 : 0.3)
                 Text("Svep åt höger")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                    .font(Typography.subheadline)
+                    .foregroundColor(.mutedForeground)
             }
             .onAppear {
                 // animera pil blinkande

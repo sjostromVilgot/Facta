@@ -13,18 +13,18 @@ struct FavoritesView: View {
                 HStack {
                     HStack(spacing: 8) {
                         Image(systemName: "heart.fill")
-                            .font(.largeTitle)
+                            .font(Typography.largeTitle)
                             .foregroundColor(.red)
                         
                         Text("Favoriter")
-                            .font(.largeTitle)
+                            .font(Typography.largeTitle)
                             .foregroundColor(.adaptiveForeground)
                     }
                     
                     Spacer()
                     
                     Text("\(viewStore.items.count)")
-                        .font(.headline)
+                        .font(Typography.headline)
                         .foregroundColor(.white)
                         .padding(.horizontal, UI.Padding.medium)
                         .padding(.vertical, UI.Padding.small)
@@ -37,7 +37,7 @@ struct FavoritesView: View {
                             viewStore.send(.setViewMode(.grid))
                         }) {
                             Image(systemName: "square.grid.2x2")
-                                .font(.headline)
+                                .font(Typography.headline)
                                 .foregroundColor(viewStore.viewMode == .grid ? .white : .primary)
                                 .padding(.horizontal, UI.Padding.medium)
                                 .padding(.vertical, UI.Padding.small)
@@ -49,7 +49,7 @@ struct FavoritesView: View {
                             viewStore.send(.setViewMode(.list))
                         }) {
                             Image(systemName: "list.bullet")
-                                .font(.headline)
+                                .font(Typography.headline)
                                 .foregroundColor(viewStore.viewMode == .list ? .white : .primary)
                                 .padding(.horizontal, UI.Padding.medium)
                                 .padding(.vertical, UI.Padding.small)
@@ -94,7 +94,7 @@ struct FavoritesView: View {
                                 viewStore.send(.setCategory(category))
                             }) {
                                 Text(categoryEmoji(category) + " " + category)
-                                    .font(.caption)
+                                    .font(Typography.caption)
                                     .foregroundColor(viewStore.category == category ? .white : .primary)
                                     .padding(.horizontal, 12)
                                     .padding(.vertical, 6)
@@ -118,16 +118,16 @@ struct FavoritesView: View {
                             .foregroundColor(.mutedForeground)
                         
                         Text("Ännu inga favoriter")
-                            .font(.headline)
+                            .font(Typography.headline)
                             .foregroundColor(.adaptiveForeground)
                         
                         VStack(spacing: UI.Spacing.small) {
                             Text("Sparade fakta fungerar offline")
-                                .font(.caption)
+                                .font(Typography.caption)
                                 .foregroundColor(.mutedForeground)
                             
                             Text("Tryck på hjärtat för att spara fakta")
-                                .font(.caption)
+                                .font(Typography.caption)
                                 .foregroundColor(.mutedForeground)
                         }
                         .padding()
@@ -185,10 +185,10 @@ struct FavoritesView: View {
                         HStack {
                             VStack(alignment: .leading, spacing: 4) {
                                 Text("Totalt sparade")
-                                    .font(.caption)
+                                    .font(Typography.caption)
                                     .foregroundColor(.secondary)
                                 Text("\(viewStore.items.count)")
-                                    .font(.headline)
+                                    .font(Typography.headline)
                                     .foregroundColor(.primary)
                             }
                             
@@ -196,10 +196,10 @@ struct FavoritesView: View {
                             
                             VStack(alignment: .center, spacing: 4) {
                                 Text("Kategorier")
-                                    .font(.caption)
+                                    .font(Typography.caption)
                                     .foregroundColor(.secondary)
                                 Text("\(uniqueCategories.count)")
-                                    .font(.headline)
+                                    .font(Typography.headline)
                                     .foregroundColor(.primary)
                             }
                             
@@ -207,10 +207,10 @@ struct FavoritesView: View {
                             
                             VStack(alignment: .trailing, spacing: 4) {
                                 Text("Snitt ord")
-                                    .font(.caption)
+                                    .font(Typography.caption)
                                     .foregroundColor(.secondary)
                                 Text("\(averageWordCount)")
-                                    .font(.headline)
+                                    .font(Typography.headline)
                                     .foregroundColor(.primary)
                             }
                         }

@@ -1,6 +1,10 @@
 import Foundation
 import ComposableArchitecture
 
+// This project uses The Composable Architecture (TCA) for state management and feature structure.
+// TCA provides a clear structure for state management, facilitates testing, and makes it easy to build the app modularly.
+// Each feature defines State, Action, and Reducer, and uses TCA's dependency injection for clients.
+
 struct AppEnvironment {
     var localData: LocalDataClient
     var persistence: PersistenceClient
