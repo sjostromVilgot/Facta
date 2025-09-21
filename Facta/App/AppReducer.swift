@@ -311,16 +311,14 @@ struct FriendsReducer: Reducer {
                 state.isFindingOpponent = true
                 return .run { send in
                     do {
-                        let isAuthenticated = try await gameCenterClient.authenticate()
-                        if isAuthenticated {
-                            let opponent = try await gameCenterClient.findRandomOpponent()
-                            await send(.opponentFound(opponent))
-                        } else {
-                            let opponent = Opponent(name: "Random Player", avatar: "🎲", level: Int.random(in: 3...8), isOnline: true)
-                            await send(.opponentFound(opponent))
-                        }
+                        // Simulate finding a random opponent (Game Center integration disabled for now)
+                        try await Task.sleep(for: .seconds(2))
+                        let opponent = Opponent(name: "Random Player", avatar: "🎲", level: Int.random(in: 3...8), isOnline: true)
+                        await send(.opponentFound(opponent))
                     } catch {
                         print("Failed to find opponent: \(error)")
+                        let opponent = Opponent(name: "Random Player", avatar: "🎲", level: Int.random(in: 3...8), isOnline: true)
+                        await send(.opponentFound(opponent))
                     }
                 }
                 

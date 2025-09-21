@@ -16,6 +16,8 @@ struct PersistenceClient {
     var saveStreakData: (StreakData) -> Void
     var loadUserSettings: () -> UserSettings
     var saveUserSettings: (UserSettings) -> Void
+    var loadUserStats: () -> UserStats
+    var saveUserStats: (UserStats) -> Void
 }
 
 
@@ -132,6 +134,27 @@ extension PersistenceClient: DependencyKey {
             if let data = try? JSONEncoder().encode(settings) {
                 UserDefaults.standard.set(data, forKey: "userSettings")
             }
+        },
+        loadUserStats: {
+            guard let data = UserDefaults.standard.data(forKey: "userStats"),
+                  let stats = try? JSONDecoder().decode(UserStats.self, from: data) else {
+                return UserStats(
+                    streakDays: 0,
+                    totalFactsRead: 0,
+                    totalQuizzes: 0,
+                    avgQuizScore: 0,
+                    bestQuizStreak: 0,
+                    badgesUnlocked: 0,
+                    favoriteCategory: nil,
+                    joinDate: Date()
+                )
+            }
+            return stats
+        },
+        saveUserStats: { stats in
+            if let data = try? JSONEncoder().encode(stats) {
+                UserDefaults.standard.set(data, forKey: "userStats")
+            }
         }
     )
     
@@ -157,7 +180,20 @@ extension PersistenceClient: DependencyKey {
                 avatar: .initials
             )
         },
-        saveUserSettings: { _ in }
+        saveUserSettings: { _ in },
+        loadUserStats: {
+            UserStats(
+                streakDays: 0,
+                totalFactsRead: 0,
+                totalQuizzes: 0,
+                avgQuizScore: 0,
+                bestQuizStreak: 0,
+                badgesUnlocked: 0,
+                favoriteCategory: nil,
+                joinDate: Date()
+            )
+        },
+        saveUserStats: { _ in }
     )
 }
 
