@@ -47,6 +47,7 @@
 		989ECF3B2E7F466B00F67979 /* QuizResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF052E7F466B00F67979 /* QuizResultView.swift */; };
 		989ECF402E7F466B00F67979 /* ChallengesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF412E7F466B00F67979 /* ChallengesView.swift */; };
 		989ECF422E7F466B00F67979 /* FriendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF432E7F466B00F67979 /* FriendsView.swift */; };
+		989ECF462E7F466B00F67979 /* AvatarSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 989ECF472E7F466B00F67979 /* AvatarSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +92,7 @@
 		A1234567890123456789012C /* Facta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Facta.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		989ECF412E7F466B00F67979 /* ChallengesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesView.swift; sourceTree = "<group>"; };
 		989ECF432E7F466B00F67979 /* FriendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsView.swift; sourceTree = "<group>"; };
+		989ECF472E7F466B00F67979 /* AvatarSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -299,6 +301,7 @@
 		989ECF002E7F466B00F67979 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				989ECF472E7F466B00F67979 /* AvatarSelectionView.swift */,
 				989ECEFD2E7F466B00F67979 /* ProfileFeature.swift */,
 				989ECEFE2E7F466B00F67979 /* ProfileView.swift */,
 				989ECEFF2E7F466B00F67979 /* SettingsView.swift */,
@@ -523,6 +526,7 @@
 				989ECF3B2E7F466B00F67979 /* QuizResultView.swift in Sources */,
 				989ECF402E7F466B00F67979 /* ChallengesView.swift in Sources */,
 				989ECF422E7F466B00F67979 /* FriendsView.swift in Sources */,
+				989ECF462E7F466B00F67979 /* AvatarSelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
