@@ -8,28 +8,31 @@ struct FactCardView: View {
     let onSave: () -> Void
     let onShare: () -> Void
     let onNext: (() -> Void)?
+    let dragOffset: CGFloat
     @State private var showingShare = false
     
-    init(fact: Fact, isSaved: Bool = false, onSave: @escaping () -> Void, onShare: @escaping () -> Void, onNext: (() -> Void)? = nil) {
+    init(fact: Fact, isSaved: Bool = false, onSave: @escaping () -> Void, onShare: @escaping () -> Void, onNext: (() -> Void)? = nil, dragOffset: CGFloat = 0) {
         self.fact = fact
         self.isSaved = isSaved
         self.onSave = onSave
         self.onShare = onShare
         self.onNext = onNext
+        self.dragOffset = dragOffset
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: UI.Spacing.medium) {
+        VStack(alignment: .leading, spacing: 12) {
             // Tags
             if !fact.tags.isEmpty {
                 HStack(spacing: 4) {
                     ForEach(fact.tags, id: \.label) { tag in
                         Text("\(tag.emoji) \(tag.label)")
                             .font(Typography.caption)
+                            .foregroundColor(.mutedForeground)
                             .padding(.horizontal, 8)
                             .padding(.vertical, 4)
                             .background(Color.muted)
-                            .cornerRadius(UI.corner)
+                            .cornerRadius(50)
                     }
                 }
             }
@@ -37,29 +40,38 @@ struct FactCardView: View {
             // Title
             Text(fact.title)
                 .font(Typography.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(.adaptiveForeground)
                 .lineLimit(2)
+                .padding(.bottom, 8)
             
             // Content preview
             Text(fact.content)
                 .font(Typography.subheadline)
-                .foregroundColor(.secondary)
+                .foregroundColor(.mutedForeground)
                 .lineLimit(3)
+                .padding(.bottom, 8)
             
             // Actions
             HStack {
                 Button(action: onSave) {
-                    Label("Spara", systemImage: isSaved ? "heart.fill" : "heart")
+                    Label(isSaved ? "Sparad" : "Spara", systemImage: isSaved ? "heart.fill" : "heart")
+                        .labelStyle(.titleAndIcon)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(isSaved ? Color.red.opacity(0.2) : Color.clear)
+                        .cornerRadius(8)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(CardButtonStyle())
                 .foregroundColor(isSaved ? .red : .primary)
                 
                 Button(action: {
                     showingShare = true
                 }) {
                     Label("Dela", systemImage: "square.and.arrow.up")
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
                 }
-                .buttonStyle(.plain)
+                .buttonStyle(CardButtonStyle())
                 .foregroundColor(.primary)
                 
                 Spacer()
@@ -83,10 +95,17 @@ struct FactCardView: View {
                 alignment: .top
             )
         }
-        .padding(UI.Padding.medium)
+        .padding(UI.Padding.large)
         .background(cardBackground)
         .cornerRadius(UI.corner)
         .shadow(color: .black.opacity(0.1), radius: 4, x: 0, y: 2)
+        .overlay(
+            RoundedRectangle(cornerRadius: UI.corner)
+                .stroke(
+                    dragFeedbackColor, 
+                    lineWidth: dragFeedbackColor == .clear ? 0 : 2
+                )
+        )
         .sheet(isPresented: $showingShare) {
             ActivityView(activityItems: [
                 "\(fact.title)\n\n\(fact.content)\n\nLadda ner Facta för mer fantastiska fakta! 📱"
@@ -109,6 +128,14 @@ struct FactCardView: View {
             )
         }
     }
+    
+    // Hjälpberäknad färg för svepram
+    private var dragFeedbackColor: Color {
+        if onNext == nil { return .clear }            // bara i Discovery-läge
+        if dragOffset > 50 { return .green }
+        if dragOffset < -50 { return .red }
+        return .clear
+    }
 }
 
 // MARK: - ActivityView
@@ -122,4 +149,13 @@ struct ActivityView: UIViewControllerRepresentable {
     }
     
     func updateUIViewController(_ uiViewController: UIActivityViewController, context: UIViewControllerRepresentableContext<ActivityView>) {}
+}
+
+// MARK: - CardButtonStyle
+struct CardButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .scaleEffect(configuration.isPressed ? 1.05 : 1.0)
+            .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
+    }
 }

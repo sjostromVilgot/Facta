@@ -27,13 +27,13 @@ struct ProfileView: View {
                         VStack(spacing: UI.Spacing.small) {
                             Text("Gäst")
                                 .font(Typography.title2)
-                                .foregroundColor(.primary)
+                                .foregroundColor(.adaptiveForeground)
                             
                             HStack {
                                 Text("🔥")
                                 Text("\(viewStore.stats.streakDays) dagars streak")
                                     .font(Typography.headline)
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.adaptiveForeground)
                             }
                         }
                     }
@@ -69,25 +69,29 @@ struct ProfileView: View {
                         StatCardView(
                             title: "Streak",
                             value: "\(viewStore.stats.streakDays)",
-                            icon: "🔥"
+                            icon: "🔥",
+                            valueColor: .orange
                         )
                         
                         StatCardView(
                             title: "Fakta lästa",
                             value: "\(viewStore.stats.totalFactsRead)",
-                            icon: "📚"
+                            icon: "📚",
+                            valueColor: .secondary
                         )
                         
                         StatCardView(
                             title: "Quiz-snitt",
                             value: "\(viewStore.stats.avgQuizScore)%",
-                            icon: "🧠"
+                            icon: "🧠",
+                            valueColor: .accent
                         )
                         
                         StatCardView(
                             title: "Badges",
                             value: "\(viewStore.stats.badgesUnlocked)",
-                            icon: "🏆"
+                            icon: "🏆",
+                            valueColor: .green
                         )
                     }
                     .padding(.horizontal)
@@ -97,13 +101,13 @@ struct ProfileView: View {
                         HStack {
                             Text("Badges")
                                 .font(Typography.headline)
-                                .foregroundColor(.primary)
+                                .foregroundColor(.adaptiveForeground)
                             
                             Spacer()
                             
                             Text("\(viewStore.stats.badgesUnlocked)/\(viewStore.badges.count)")
                                 .font(Typography.caption)
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.mutedForeground)
                         }
                         
                         BadgesGridView(badges: viewStore.badges)
@@ -113,7 +117,7 @@ struct ProfileView: View {
                             VStack(alignment: .leading, spacing: UI.Spacing.small) {
                                 Text("Nästa badge:")
                                     .font(.caption)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.mutedForeground)
                                 
                                 Text("\(nextBadge.icon) \(nextBadge.name)")
                                     .font(.caption)
@@ -121,7 +125,7 @@ struct ProfileView: View {
                                 
                                 Text(nextBadge.description)
                                     .font(.caption)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.mutedForeground)
                             }
                             .padding()
                             .background(Color.muted)
@@ -185,6 +189,7 @@ struct StatCardView: View {
     let title: String
     let value: String
     let icon: String
+    let valueColor: Color
     
     private var iconColor: Color {
         switch title {
@@ -224,15 +229,51 @@ struct StatCardView: View {
             
             Text(value)
                 .font(Typography.headline)
-                .foregroundColor(.primary)
+                .foregroundColor(valueColor)
             
             Text(title)
                 .font(Typography.caption)
-                .foregroundColor(.secondary)
+                .foregroundColor(.mutedForeground)
         }
         .padding()
-        .background(Color.muted)
+        .background(cardBackground)
         .cornerRadius(UI.corner)
+        .shadow(color: .black.opacity(0.05), radius: 1, x: 0, y: 1)
+    }
+    
+    private var cardBackground: LinearGradient {
+        switch title {
+        case "Streak":
+            return LinearGradient(
+                colors: [.orange.opacity(0.05), .red.opacity(0.05)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case "Fakta lästa":
+            return LinearGradient(
+                colors: [.secondary.opacity(0.05), .blue.opacity(0.05)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case "Quiz-snitt":
+            return LinearGradient(
+                colors: [.accent.opacity(0.05), .yellow.opacity(0.05)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        case "Badges":
+            return LinearGradient(
+                colors: [.green.opacity(0.05), .mint.opacity(0.05)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        default:
+            return LinearGradient(
+                colors: [.primary.opacity(0.05), .secondary.opacity(0.05)],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+        }
     }
 }
 

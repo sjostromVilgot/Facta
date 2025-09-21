@@ -79,7 +79,7 @@ struct Typography {
     
     // Section Headers
     static let title1 = Font.custom("Geist-Bold", size: 28)
-    static let title2 = Font.custom("Geist-SemiBold", size: 22)
+    static let title2 = Font.custom("Geist-Bold", size: 22)
     static let title3 = Font.custom("Geist-SemiBold", size: 20)
     
     // Headlines

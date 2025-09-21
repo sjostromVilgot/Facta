@@ -5,6 +5,7 @@ struct SwipeHintView: View {
     let store: StoreOf<OnboardingReducer>
     @State private var cardOffset: CGFloat = 0
     @State private var isAnimating = false
+    @State private var showArrow = false
     
     var body: some View {
         VStack(spacing: UI.Spacing.large) {
@@ -36,7 +37,8 @@ struct SwipeHintView: View {
                     ),
                     isSaved: false,
                     onSave: {},
-                    onShare: {}
+                    onShare: {},
+                    dragOffset: cardOffset
                 )
                 .frame(width: 300, height: 200)
                 .offset(x: cardOffset)
@@ -56,6 +58,22 @@ struct SwipeHintView: View {
                 }
             }
             .frame(height: 200)
+            
+            // Instruction text with pulsing arrow
+            HStack {
+                Image(systemName: "chevron.right")
+                    .font(.headline)
+                    .opacity(showArrow ? 1.0 : 0.3)
+                Text("Svep åt höger")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+            }
+            .onAppear {
+                // animera pil blinkande
+                withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) {
+                    showArrow.toggle()
+                }
+            }
             
             Spacer()
             

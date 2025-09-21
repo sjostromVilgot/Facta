@@ -11,9 +11,15 @@ struct FavoritesView: View {
             VStack(spacing: 0) {
                 // Header
                 HStack {
-                    Text("❤️ Favoriter")
-                        .font(.largeTitle)
-                        .foregroundColor(.primary)
+                    HStack(spacing: 8) {
+                        Image(systemName: "heart.fill")
+                            .font(.largeTitle)
+                            .foregroundColor(.red)
+                        
+                        Text("Favoriter")
+                            .font(.largeTitle)
+                            .foregroundColor(.adaptiveForeground)
+                    }
                     
                     Spacer()
                     
@@ -57,20 +63,21 @@ struct FavoritesView: View {
                 // Search Field
                 HStack {
                     Image(systemName: "magnifyingglass")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.mutedForeground)
                     
                     TextField("Sök i favoriter...", text: viewStore.binding(
                         get: \.query,
                         send: FavoritesAction.setQuery
                     ))
                     .textFieldStyle(PlainTextFieldStyle())
+                    .foregroundColor(.adaptiveForeground)
                     
                     if !viewStore.query.isEmpty {
                         Button(action: {
                             viewStore.send(.setQuery(""))
                         }) {
                             Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.mutedForeground)
                         }
                     }
                 }
@@ -86,13 +93,13 @@ struct FavoritesView: View {
                             Button(action: {
                                 viewStore.send(.setCategory(category))
                             }) {
-                                Text(category)
+                                Text(categoryEmoji(category) + " " + category)
                                     .font(.caption)
                                     .foregroundColor(viewStore.category == category ? .white : .primary)
-                                    .padding(.horizontal, UI.Padding.medium)
-                                    .padding(.vertical, UI.Padding.small)
+                                    .padding(.horizontal, 12)
+                                    .padding(.vertical, 6)
                                     .background(viewStore.category == category ? Color.primary : Color.muted)
-                                    .cornerRadius(UI.corner)
+                                    .cornerRadius(50)
                             }
                         }
                     }
@@ -106,21 +113,22 @@ struct FavoritesView: View {
                     VStack(spacing: UI.Spacing.large) {
                         Spacer()
                         
-                        Text("💔")
+                        Image(systemName: "lightbulb")
                             .font(.system(size: 60))
+                            .foregroundColor(.mutedForeground)
                         
                         Text("Ännu inga favoriter")
                             .font(.headline)
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.adaptiveForeground)
                         
                         VStack(spacing: UI.Spacing.small) {
                             Text("Sparade fakta fungerar offline")
                                 .font(.caption)
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.mutedForeground)
                             
                             Text("Tryck på hjärtat för att spara fakta")
                                 .font(.caption)
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.mutedForeground)
                         }
                         .padding()
                         .background(Color.muted)
@@ -243,6 +251,21 @@ struct FavoritesView: View {
         }
         
         return totalWords / items.count
+    }
+    
+    private func categoryEmoji(_ category: String) -> String {
+        switch category {
+        case "Djur": return "🐾"
+        case "Rymden": return "🪐"
+        case "Mat": return "🍽️"
+        case "Historia": return "📜"
+        case "Vetenskap": return "🔬"
+        case "Naturhistoria": return "🌿"
+        case "Botanik": return "🌱"
+        case "Fysik": return "⚡"
+        case "Matvetenskap": return "🧪"
+        default: return "📚"
+        }
     }
 }
 

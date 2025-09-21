@@ -19,19 +19,22 @@ struct QuizOverviewView: View {
                         StatCardView(
                             title: "Senaste",
                             value: "\(latestScorePercentage(from: viewStore.history))%",
-                            icon: "chart.bar.fill"
+                            icon: "chart.bar.fill",
+                            valueColor: .accent
                         )
                         
                         StatCardView(
                             title: "Bästa streak",
                             value: "\(bestStreak(from: viewStore.history))",
-                            icon: "flame.fill"
+                            icon: "flame.fill",
+                            valueColor: .orange
                         )
                         
                         StatCardView(
                             title: "Badges",
                             value: "\(badgeCount(from: viewStore.history))",
-                            icon: "star.fill"
+                            icon: "star.fill",
+                            valueColor: .green
                         )
                     }
                     

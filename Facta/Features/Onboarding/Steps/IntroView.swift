@@ -3,6 +3,7 @@ import ComposableArchitecture
 
 struct IntroView: View {
     let store: StoreOf<OnboardingReducer>
+    @State private var showCards = false
     
     var body: some View {
         VStack(spacing: UI.Spacing.large) {
@@ -32,11 +33,13 @@ struct IntroView: View {
                     ),
                     isSaved: false,
                     onSave: {},
-                    onShare: {}
+                    onShare: {},
+                    dragOffset: 0
                 )
                 .offset(x: -20, y: 10)
                 .rotationEffect(.degrees(-5))
-                .opacity(0.7)
+                .opacity(showCards ? 0.7 : 0)
+                .animation(.easeInOut(duration: 0.6).delay(0.2), value: showCards)
                 
                 FactCardView(
                     fact: Fact(
@@ -50,11 +53,13 @@ struct IntroView: View {
                     ),
                     isSaved: false,
                     onSave: {},
-                    onShare: {}
+                    onShare: {},
+                    dragOffset: 0
                 )
                 .offset(x: 20, y: -10)
                 .rotationEffect(.degrees(5))
-                .opacity(0.8)
+                .opacity(showCards ? 0.8 : 0)
+                .animation(.easeInOut(duration: 0.6).delay(0.4), value: showCards)
                 
                 FactCardView(
                     fact: Fact(
@@ -68,11 +73,18 @@ struct IntroView: View {
                     ),
                     isSaved: false,
                     onSave: {},
-                    onShare: {}
+                    onShare: {},
+                    dragOffset: 0
                 )
-                .opacity(0.9)
+                .opacity(showCards ? 0.9 : 0)
+                .animation(.easeInOut(duration: 0.6).delay(0.6), value: showCards)
             }
             .frame(height: 200)
+            .onAppear {
+                withAnimation {
+                    showCards = true
+                }
+            }
             
             Spacer()
             

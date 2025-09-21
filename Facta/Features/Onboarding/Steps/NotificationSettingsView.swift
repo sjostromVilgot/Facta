@@ -5,19 +5,19 @@ struct NotificationSettingsView: View {
     let store: StoreOf<OnboardingReducer>
     
     var body: some View {
-        WithViewStore(store, observe: { $0 }) { viewStore in
+        WithViewStore(store, observe: \.self) { viewStore in
             VStack(spacing: UI.Spacing.large) {
                 Spacer()
                 
                 VStack(spacing: UI.Spacing.medium) {
                     Text("Notisinställningar")
                         .font(Typography.largeTitle)
-                        .foregroundColor(.primary)
+                        .foregroundColor(.adaptiveForeground)
                         .multilineTextAlignment(.center)
                     
                     Text("Ställ in dina notifieringar för att få det bästa av Facta")
                         .font(.body)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.mutedForeground)
                         .multilineTextAlignment(.center)
                         .padding(.horizontal)
                 }
@@ -30,7 +30,7 @@ struct NotificationSettingsView: View {
                         
                         Text("Notiser \(viewStore.notificationsEnabled ? "aktiverade" : "inaktiverade")")
                             .font(Typography.headline)
-                            .foregroundColor(.primary)
+                            .foregroundColor(.adaptiveForeground)
                         
                         Spacer()
                     }
@@ -41,13 +41,13 @@ struct NotificationSettingsView: View {
                     // Daily fact toggle
                     HStack {
                         VStack(alignment: .leading, spacing: UI.Spacing.small) {
-                            Text("Dagens fakta 09:00")
+                            Text("Daglig fakta")
                                 .font(Typography.headline)
-                                .foregroundColor(.primary)
+                                .foregroundColor(.adaptiveForeground)
                             
-                            Text("Få en ny fascinerande fakta varje dag")
+                            Text("Få en ny fascinerande fakta varje dag kl 09:00")
                                 .font(.caption)
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.mutedForeground)
                         }
                         
                         Spacer()
@@ -55,6 +55,30 @@ struct NotificationSettingsView: View {
                         Toggle("", isOn: viewStore.binding(
                             get: \.dailyFactEnabled,
                             send: OnboardingAction.toggleDailyFact
+                        ))
+                        .toggleStyle(SwitchToggleStyle(tint: .primary))
+                    }
+                    .padding()
+                    .background(Color.muted)
+                    .cornerRadius(UI.corner)
+                    
+                    // Quiz reminder toggle
+                    HStack {
+                        VStack(alignment: .leading, spacing: UI.Spacing.small) {
+                            Text("Quiz-påminnelse")
+                                .font(Typography.headline)
+                                .foregroundColor(.adaptiveForeground)
+                            
+                            Text("Få påminnelser om att spela quiz för att utveckla dina kunskaper")
+                                .font(.caption)
+                                .foregroundColor(.mutedForeground)
+                        }
+                        
+                        Spacer()
+                        
+                        Toggle("", isOn: viewStore.binding(
+                            get: \.notificationsEnabled,
+                            send: OnboardingAction.notificationPermissionResponse
                         ))
                         .toggleStyle(SwitchToggleStyle(tint: .primary))
                     }

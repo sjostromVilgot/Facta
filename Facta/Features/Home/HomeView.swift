@@ -55,13 +55,13 @@ struct HomeView: View {
                             HStack {
                                 Text("Upptäck mer")
                                     .font(Typography.headline)
-                                    .foregroundColor(.primary)
+                                    .foregroundColor(.adaptiveForeground)
                                 
                                 Spacer()
                                 
                                 Text("\(viewStore.index + 1) av \(viewStore.discovery.count)")
                                     .font(Typography.caption)
-                                    .foregroundColor(.secondary)
+                                    .foregroundColor(.mutedForeground)
                                 
                                 Button("Blanda") {
                                     viewStore.send(.shuffle)
@@ -73,40 +73,43 @@ struct HomeView: View {
                             // Discovery Card with Swipe
                             ZStack {
                                 if viewStore.index < viewStore.discovery.count {
-                                    ZStack {
-                                        FactCardView(
-                                            fact: viewStore.discovery[viewStore.index],
-                                            isSaved: viewStore.favorites.contains(viewStore.discovery[viewStore.index].id),
-                                            onSave: {
-                                                viewStore.send(.save(viewStore.discovery[viewStore.index]))
-                                            },
-                                            onShare: {
-                                                viewStore.send(.share(viewStore.discovery[viewStore.index]))
-                                            },
-                                            onNext: {
-                                                viewStore.send(.next)
-                                            }
-                                        )
-                                        .offset(x: dragOffset)
-                                        .rotationEffect(.degrees(Double(dragOffset) * 0.03))
-                                        .opacity(1 - min(abs(dragOffset) / 500.0, 0.3))
+            ZStack {
+                FactCardView(
+                    fact: viewStore.discovery[viewStore.index],
+                    isSaved: viewStore.favorites.contains(viewStore.discovery[viewStore.index].id),
+                    onSave: {
+                        viewStore.send(.save(viewStore.discovery[viewStore.index]))
+                    },
+                    onShare: {
+                        viewStore.send(.share(viewStore.discovery[viewStore.index]))
+                    },
+                    onNext: {
+                        viewStore.send(.next)
+                    },
+                    dragOffset: dragOffset
+                )
+                .offset(x: dragOffset)
+                .rotationEffect(.degrees(Double(dragOffset) * 0.03))
+                .opacity(1 - min(abs(dragOffset) / 500.0, 0.3))
                                         
                                         // Swipe feedback overlays
                                         if dragOffset > 50 {
                                             Text("Spara")
-                                                .font(.headline)
+                                                .font(.caption)
+                                                .fontWeight(.semibold)
                                                 .foregroundColor(.white)
-                                                .padding(.horizontal, 16)
-                                                .padding(.vertical, 8)
+                                                .padding(.horizontal, 12)
+                                                .padding(.vertical, 6)
                                                 .background(Color.green.opacity(0.8))
                                                 .cornerRadius(20)
                                                 .position(x: 280, y: 40)
                                         } else if dragOffset < -50 {
                                             Text("Nästa")
-                                                .font(.headline)
+                                                .font(.caption)
+                                                .fontWeight(.semibold)
                                                 .foregroundColor(.white)
-                                                .padding(.horizontal, 16)
-                                                .padding(.vertical, 8)
+                                                .padding(.horizontal, 12)
+                                                .padding(.vertical, 6)
                                                 .background(Color.red.opacity(0.8))
                                                 .cornerRadius(20)
                                                 .position(x: 60, y: 40)
@@ -115,6 +118,10 @@ struct HomeView: View {
                                     .gesture(
                                         DragGesture()
                                             .onChanged { value in
+                                                // Ignorera svep om gesten rört sig mycket vertikalt
+                                                if abs(value.translation.height) > 50 {
+                                                    return
+                                                }
                                                 dragOffset = value.translation.width
                                             }
                                             .onEnded { value in

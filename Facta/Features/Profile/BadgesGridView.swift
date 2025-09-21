@@ -17,6 +17,7 @@ struct BadgesGridView: View {
 
 struct BadgeView: View {
     let badge: Badge
+    @State private var showingDescription = false
     
     var body: some View {
         VStack(spacing: UI.Spacing.small) {
@@ -39,13 +40,21 @@ struct BadgeView: View {
                         .position(x: 40, y: 10)
                 }
             }
+            .onTapGesture {
+                showingDescription = true
+            }
             
             Text(badge.name)
                 .font(.caption)
-                .foregroundColor(badge.isUnlocked ? .primary : .secondary)
+                .foregroundColor(badge.isUnlocked ? .adaptiveForeground : .mutedForeground)
                 .multilineTextAlignment(.center)
                 .lineLimit(2)
         }
         .padding(.vertical, UI.Padding.small)
+        .alert(badge.name, isPresented: $showingDescription) {
+            Button("OK") { }
+        } message: {
+            Text(badge.description)
+        }
     }
 }
