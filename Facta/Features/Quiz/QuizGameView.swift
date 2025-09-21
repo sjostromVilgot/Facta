@@ -13,37 +13,51 @@ struct QuizGameView: View {
     
     var body: some View {
         WithViewStore(store, observe: \.self) { viewStore in
-            VStack(spacing: 0) {
-                // Top Bar
-                HStack {
-                    Button("Avsluta") {
-                        viewStore.send(.backToOverview)
-                    }
-                    .foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    VStack(spacing: 4) {
-                        Text(quizModeTitle(viewStore.quizMode))
-                            .font(.headline)
-                            .foregroundColor(.primary)
-                        
-                        // Challenge stage indicator
-                        if viewStore.quizMode == .challenge {
-                            Text(challengeStageText(viewStore.challengeStage))
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    
-                    Spacer()
-                    
-                    Text("Fråga \(viewStore.i + 1) av \(viewStore.questions.count)")
+            mainContent(viewStore: viewStore)
+        }
+    }
+    
+    private func mainContent(viewStore: ViewStore<QuizState, QuizAction>) -> some View {
+        VStack(spacing: 0) {
+            topBar(viewStore: viewStore)
+            questionContent(viewStore: viewStore)
+        }
+    }
+    
+    private func topBar(viewStore: ViewStore<QuizState, QuizAction>) -> some View {
+        HStack {
+            Button("Avsluta") {
+                viewStore.send(.backToOverview)
+            }
+            .foregroundColor(.secondary)
+            
+            Spacer()
+            
+            VStack(spacing: 4) {
+                Text(quizModeTitle(viewStore.quizMode))
+                    .font(.headline)
+                    .foregroundColor(.primary)
+                
+                // Challenge stage indicator
+                if viewStore.quizMode == .challenge {
+                    Text(challengeStageText(viewStore.challengeStage))
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-                .padding()
-                .background(Color.muted)
+            }
+            
+            Spacer()
+            
+            Text("Fråga \(viewStore.i + 1) av \(viewStore.questions.count)")
+                .font(.caption)
+                .foregroundColor(.secondary)
+        }
+        .padding()
+        .background(Color.muted)
+    }
+    
+    private func questionContent(viewStore: ViewStore<QuizState, QuizAction>) -> some View {
+        VStack(spacing: 0) {
                 
                 // Progress Bar (hidden for blitz mode)
                 if viewStore.quizMode != .blitz {
