@@ -2,10 +2,10 @@ import SwiftUI
 import ComposableArchitecture
 
 struct FriendsView: View {
-    let store: StoreOf<FriendsReducer>
+    let store: Store<FriendsState, FriendsAction>
     
     var body: some View {
-        WithViewStore(store, observe: { $0 }) { viewStore in
+        WithViewStore(store, observe: \.self) { viewStore in
             NavigationView {
                 VStack(spacing: 0) {
                     // Header

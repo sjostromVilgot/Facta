@@ -2,10 +2,10 @@ import SwiftUI
 import ComposableArchitecture
 
 struct ChallengesView: View {
-    let store: StoreOf<ChallengesReducer>
+    let store: Store<ChallengesState, ChallengesAction>
     
     var body: some View {
-        WithViewStore(store, observe: { $0 }) { viewStore in
+        WithViewStore(store, observe: \.self) { viewStore in
             NavigationView {
                 ScrollView {
                     VStack(spacing: UI.Spacing.large) {
