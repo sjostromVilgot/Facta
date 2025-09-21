@@ -1,0 +1,251 @@
+/* 
+  Localizable.strings
+  Facta
+  
+  English translations for Facta app
+  Created for international accessibility
+*/
+
+// MARK: - Tab Bar
+"Hem" = "Home";
+"Quiz" = "Quiz";
+"Favoriter" = "Favorites";
+"Profil" = "Profile";
+
+// MARK: - Home View
+"✨ Dagens fakta" = "✨ Fact of the Day";
+"Upptäck mer" = "Discover more";
+"Blanda" = "Shuffle";
+"Laddar fakta..." = "Loading facts...";
+"Inga fakta tillgängliga" = "No facts available";
+"Kontrollera din internetanslutning och försök igen" = "Check your internet connection and try again";
+
+// MARK: - Fact Card Actions
+"Spara" = "Save";
+"Sparad" = "Saved";
+"Nästa" = "Next";
+"Dela" = "Share";
+"Ta bort från favoriter" = "Remove from favorites";
+
+// MARK: - Premium Badge
+"PREMIUM" = "PREMIUM";
+
+// MARK: - Onboarding
+"Onödig fakta." = "Useless facts.";
+"Oändligt kul." = "Endless fun.";
+"Dagens fakta & quiz" = "Daily Facts & Quiz";
+"Snabb quiz" = "Quick quiz";
+"Samla poäng" = "Collect points";
+"Testa dina kunskaper med snabba frågor" = "Test your knowledge with quick questions";
+"Tjäna poäng och lås upp nya nivåer" = "Earn points and unlock new levels";
+"Svep för mer" = "Swipe for more";
+"Svep åt höger" = "Swipe right";
+"Börja utforska fakta" = "Start exploring facts";
+
+// MARK: - Notification Settings
+"Notisinställningar" = "Notification Settings";
+"Ställ in dina notifieringar för att få det bästa av Facta" = "Configure your notifications to get the most out of Facta";
+"Notiser aktiverade" = "Notifications enabled";
+"Notiser inaktiverade" = "Notifications disabled";
+"Daglig fakta" = "Daily fact";
+"Få en ny fascinerande fakta varje dag kl 09:00" = "Receive a fascinating fact each day at 09:00";
+"Quiz-påminnelse" = "Quiz reminder";
+"Få påminnelser om att spela quiz för att utveckla dina kunskaper" = "Get reminders to play the quiz and expand your knowledge";
+
+// MARK: - Favorites
+"Ännu inga favoriter" = "No favorites yet";
+"Sparade fakta fungerar offline" = "Saved facts work offline";
+"Tryck på hjärtat för att spara fakta" = "Tap the heart to save facts";
+"Totalt sparade" = "Total saved";
+"Kategorier" = "Categories";
+"Snitt ord" = "Avg words";
+
+// MARK: - Profile
+"Statistik" = "Statistics";
+"Inställningar" = "Settings";
+"Om Facta" = "About Facta";
+"Tema" = "Theme";
+"Språk" = "Language";
+"Svenska" = "Swedish";
+"English" = "English";
+"Ljust" = "Light";
+"Mörkt" = "Dark";
+"System" = "System";
+
+// MARK: - Statistics
+"Streak" = "Streak";
+"Fakta lästa" = "Facts read";
+"Quiz-snitt" = "Quiz average";
+"Badges" = "Badges";
+"dagar" = "days";
+"fakta" = "facts";
+"poäng" = "points";
+"badges" = "badges";
+
+// MARK: - Quiz
+"Starta quiz" = "Start quiz";
+"Fortsätt" = "Continue";
+"Avsluta" = "Finish";
+"Rätt!" = "Correct!";
+"Fel!" = "Wrong!";
+"Poäng" = "Points";
+"Streak" = "Streak";
+"Bästa streak" = "Best streak";
+"Senaste" = "Latest";
+"Quizdags!" = "Quiz time!";
+"Dags för dagens quiz!" = "Time for today's quiz!";
+
+// MARK: - Badges
+"Nästa badge" = "Next badge";
+"Lås upp fler badges genom att spela quiz" = "Unlock more badges by playing quiz";
+"Låst" = "Locked";
+"Upplåst" = "Unlocked";
+
+// MARK: - Categories
+"Djur" = "Animals";
+"Rymden" = "Space";
+"Mat" = "Food";
+"Historia" = "History";
+"Vetenskap" = "Science";
+"Naturhistoria" = "Natural History";
+"Botanik" = "Botany";
+"Fysik" = "Physics";
+"Matvetenskap" = "Food Science";
+
+// MARK: - Common Actions
+"OK" = "OK";
+"Avbryt" = "Cancel";
+"Bekräfta" = "Confirm";
+"Stäng" = "Close";
+"Tillbaka" = "Back";
+"Framåt" = "Forward";
+"Uppdatera" = "Refresh";
+"Ladda om" = "Reload";
+"Starta quiz" = "Start quiz";
+"Fortsätt" = "Continue";
+"Avsluta" = "Finish";
+"Rätt!" = "Correct!";
+"Fel!" = "Wrong!";
+"SANT" = "TRUE";
+"FALSKT" = "FALSE";
+
+// MARK: - Quiz Game
+"Fråga" = "Question";
+"av" = "of";
+"Poäng:" = "Points:";
+"Procent:" = "Percent:";
+"Streak:" = "Streak:";
+"Historik" = "History";
+"Ingen historik än" = "No history yet";
+"Spela ditt första quiz för att se resultat här" = "Play your first quiz to see results here";
+
+// MARK: - Profile Details
+"Gäst" = "Guest";
+"dagar" = "days";
+"XP" = "XP";
+"Badges" = "Badges";
+"Nästa badge:" = "Next badge:";
+"Lås upp fler badges genom att spela quiz" = "Unlock more badges by playing quiz";
+"Låst" = "Locked";
+"Upplåst" = "Unlocked";
+
+// MARK: - Settings
+"Tema" = "Theme";
+"Språk" = "Language";
+"Svenska" = "Swedish";
+"English" = "English";
+"Ljust" = "Light";
+"Mörkt" = "Dark";
+"System" = "System";
+"Version" = "Version";
+
+// MARK: - Onboarding Steps
+"Redo att börja?" = "Ready to start?";
+"Du är redo att utforska världen av fascinerande fakta!" = "You're ready to explore the world of fascinating facts!";
+"Dagens fakta & quiz" = "Daily Facts & Quiz";
+"Snabb quiz" = "Quick quiz";
+"Samla poäng" = "Collect points";
+"Testa dina kunskaper med snabba frågor" = "Test your knowledge with quick questions";
+"Tjäna poäng och lås upp nya nivåer" = "Earn points and unlock new levels";
+
+// MARK: - About
+"Om Facta" = "About Facta";
+"En app för att lära sig fascinerande fakta och testa sina kunskaper med quiz." = "An app to learn fascinating facts and test your knowledge with quizzes.";
+"Version" = "Version";
+"Fascinerande fakta varje dag" = "Fascinating facts every day";
+"Facta är en app som ger dig fascinerande fakta varje dag och roliga quiz för att testa dina kunskaper. Appen är skapad för att göra lärande underhållande och lättillgängligt." = "Facta is an app that gives you fascinating facts every day and fun quizzes to test your knowledge. The app is designed to make learning entertaining and accessible.";
+"Funktioner" = "Features";
+"Dagliga fakta" = "Daily facts";
+"Få en ny fascinerande fakta varje dag" = "Get a new fascinating fact every day";
+"Testa dina kunskaper med snabba frågor" = "Test your knowledge with quick questions";
+"Spara dina favoritfakta för senare" = "Save your favorite facts for later";
+"Samla poäng och lås upp nya nivåer" = "Collect points and unlock new levels";
+"Vårt uppdrag" = "Our mission";
+"Vi tror att kunskap ska vara tillgänglig, underhållande och lätt att dela. Genom att kombinera fascinerande fakta med interaktiva quiz skapar vi en plattform där lärande känns som lek." = "We believe that knowledge should be accessible, entertaining, and easy to share. By combining fascinating facts with interactive quizzes, we create a platform where learning feels like play.";
+"Stäng" = "Close";
+"Integritetspolicy" = "Privacy Policy";
+
+// MARK: - Time and Counters
+"s" = "s";
+"dagar" = "days";
+"fakta" = "facts";
+"poäng" = "points";
+"badges" = "badges";
+"ord" = "words";
+"snitt" = "avg";
+"av" = "of";
+"dagarars streak" = "day streak";
+"Totalt sparade" = "Total saved";
+"Kategorier" = "Categories";
+"Snitt ord" = "Avg words";
+
+// MARK: - Dynamic Text Patterns
+"Notiser %@" = "Notifications %@";
+"aktiverade" = "enabled";
+"inaktiverade" = "disabled";
+"%@ av %@" = "%@ of %@";
+"%@ dagars streak" = "%@ day streak";
+"%@/%@ badges" = "%@/%@ badges";
+"%@/%@" = "%@/%@";
+"%@%%" = "%@%%";
+"🔥%@" = "🔥%@";
+"Fråga %@ av %@" = "Question %@ of %@";
+"%@s" = "%@s";
+
+// MARK: - Error Messages
+"Ett fel uppstod" = "An error occurred";
+"Kunde inte ladda data" = "Could not load data";
+"Kunde inte spara" = "Could not save";
+"Kunde inte ta bort" = "Could not remove";
+"Försök igen" = "Try again";
+
+// MARK: - Success Messages
+"Sparat!" = "Saved!";
+"Borttaget!" = "Removed!";
+"Uppdaterat!" = "Updated!";
+"Klart!" = "Done!";
+
+// MARK: - Time and Date
+"idag" = "today";
+"igår" = "yesterday";
+"i morgon" = "tomorrow";
+"vecka" = "week";
+"månad" = "month";
+"år" = "year";
+
+// MARK: - Numbers and Quantities
+"en" = "one";
+"två" = "two";
+"tre" = "three";
+"fyra" = "four";
+"fem" = "five";
+"sex" = "six";
+"sju" = "seven";
+"åtta" = "eight";
+"nio" = "nine";
+"tio" = "ten";
+"flera" = "several";
+"många" = "many";
+"alla" = "all";
+"ingen" = "none";
+"några" = "some";

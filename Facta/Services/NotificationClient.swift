@@ -6,6 +6,8 @@ struct NotificationClient {
     var requestAuthorization: () async throws -> Bool
     var scheduleDailyReminder: (Date) async throws -> Void
     var cancelDailyReminder: () async throws -> Void
+    var scheduleQuizReminder: (Date) async throws -> Void
+    var cancelQuizReminder: () async throws -> Void
     var scheduleFactReminder: (String, Date) async throws -> Void
     var cancelFactReminder: (String) async throws -> Void
     var getPendingNotifications: () async throws -> [UNNotificationRequest]
@@ -40,6 +42,29 @@ extension NotificationClient: DependencyKey {
         cancelDailyReminder: {
             let center = UNUserNotificationCenter.current()
             center.removePendingNotificationRequests(withIdentifiers: ["daily-reminder"])
+        },
+        scheduleQuizReminder: { time in
+            let center = UNUserNotificationCenter.current()
+            let content = UNMutableNotificationContent()
+            content.title = "Quizdags!"
+            content.body = "Dags för dagens quiz!"
+            content.sound = .default
+            
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.hour, .minute], from: time)
+            let trigger = UNCalendarNotificationTrigger(dateMatching: components, repeats: true)
+            
+            let request = UNNotificationRequest(
+                identifier: "quiz-reminder",
+                content: content,
+                trigger: trigger
+            )
+            
+            try await center.add(request)
+        },
+        cancelQuizReminder: {
+            let center = UNUserNotificationCenter.current()
+            center.removePendingNotificationRequests(withIdentifiers: ["quiz-reminder"])
         },
         scheduleFactReminder: { factTitle, date in
             let center = UNUserNotificationCenter.current()
@@ -80,6 +105,8 @@ extension NotificationClient: DependencyKey {
         requestAuthorization: { true },
         scheduleDailyReminder: { _ in },
         cancelDailyReminder: { },
+        scheduleQuizReminder: { _ in },
+        cancelQuizReminder: { },
         scheduleFactReminder: { _, _ in },
         cancelFactReminder: { _ in },
         getPendingNotifications: { [] },

@@ -94,10 +94,15 @@ struct OnboardingReducer: Reducer {
                 state.dailyFactEnabled = enabled
                 return .none
                 
+            case .toggleQuizReminder(let enabled):
+                state.quizReminderEnabled = enabled
+                return .none
+                
             case .finish:
                 state.isComplete = true
                 UserDefaults.standard.set(true, forKey: "facta-onboarding-complete")
                 UserDefaults.standard.set(state.dailyFactEnabled, forKey: "daily-fact-enabled")
+                UserDefaults.standard.set(state.quizReminderEnabled, forKey: "quiz-reminders")
                 
                 if state.notificationsEnabled && state.dailyFactEnabled {
                     // Schedule daily notification at 09:00
@@ -109,6 +114,20 @@ struct OnboardingReducer: Reducer {
                     if let scheduledTime = calendar.nextDate(after: Date(), matching: dateComponents, matchingPolicy: .nextTime) {
                         return .run { _ in
                             try await notificationClient.scheduleDailyReminder(scheduledTime)
+                        }
+                    }
+                }
+                
+                if state.notificationsEnabled && state.quizReminderEnabled {
+                    // Schedule quiz reminder at 18:00
+                    let calendar = Calendar.current
+                    var dateComponents = DateComponents()
+                    dateComponents.hour = 18
+                    dateComponents.minute = 0
+                    
+                    if let scheduledTime = calendar.nextDate(after: Date(), matching: dateComponents, matchingPolicy: .nextTime) {
+                        return .run { _ in
+                            try await notificationClient.scheduleQuizReminder(scheduledTime)
                         }
                     }
                 }
@@ -308,9 +327,6 @@ struct FavoritesReducer: Reducer {
                 persistenceClient.removeFavorite(id)
                 return .none
                 
-            case .share(let fact):
-                // Share functionality handled in FactCardView
-                return .none
             }
         }
     }
@@ -338,6 +354,32 @@ struct ProfileReducer: Reducer {
                 let avgQuizScore = quizHistory.isEmpty ? 0 : quizHistory.map { $0.score }.reduce(0, +) / quizHistory.count
                 let bestQuizStreak = quizHistory.map { $0.bestStreak }.max() ?? 0
                 
+                // Calculate streak days
+                let calendar = Calendar.current
+                let readDates = readFacts.values.map { calendar.startOfDay(for: $0) }
+                let uniqueDays = Set(readDates)
+                
+                var currentStreak = 0
+                let today = calendar.startOfDay(for: Date())
+                
+                // If the user has read something today or yesterday, count from the latest day
+                if let latestDay = uniqueDays.sorted().last {
+                    let daysDifference = calendar.dateComponents([.day], from: latestDay, to: today).day ?? 0
+                    if daysDifference <= 1 {
+                        // Count streak including latestDay
+                        var dayIterator = latestDay
+                        while uniqueDays.contains(dayIterator) {
+                            currentStreak += 1
+                            // Move to previous day
+                            if let previousDay = calendar.date(byAdding: .day, value: -1, to: dayIterator) {
+                                dayIterator = previousDay
+                            } else {
+                                break
+                            }
+                        }
+                    }
+                }
+                
                 // Calculate favorite category
                 let categoryCounts = Dictionary(grouping: favorites, by: \.category)
                     .mapValues { $0.count }
@@ -353,7 +395,7 @@ struct ProfileReducer: Reducer {
                 }
                 
                 state.stats = UserStats(
-                    streakDays: 0, // TODO: Calculate actual streak
+                    streakDays: currentStreak,
                     totalFactsRead: totalFactsRead,
                     totalQuizzes: totalQuizzes,
                     avgQuizScore: avgQuizScore,
@@ -398,9 +440,16 @@ struct ProfileReducer: Reducer {
                 UserDefaults.standard.set(enabled, forKey: "quiz-reminders")
                 
                 if enabled {
-                    // TODO: Schedule quiz reminders
+                    // Schedule quiz reminder at 18:00
+                    var dateComponents = DateComponents()
+                    dateComponents.hour = 18
+                    dateComponents.minute = 0
+                    if let scheduledTime = Calendar.current.nextDate(after: Date(), matching: dateComponents, matchingPolicy: .nextTime) {
+                        return .run { _ in try await notificationClient.scheduleQuizReminder(scheduledTime) }
+                    }
                 } else {
-                    // TODO: Cancel quiz reminders
+                    // Cancel quiz reminders
+                    return .run { _ in try await notificationClient.cancelQuizReminder() }
                 }
                 
                 return .none

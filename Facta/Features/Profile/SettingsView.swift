@@ -49,8 +49,10 @@ struct SettingsView: View {
                     
                     // About Section
                     Section("Om") {
-                        Button("Integritetspolicy") {
-                            // TODO: Open privacy policy URL
+                        Button(NSLocalizedString("Integritetspolicy", comment: "Privacy Policy button")) {
+                            if let url = URL(string: "https://www.facta.app/privacy") {
+                                UIApplication.shared.open(url)
+                            }
                         }
                         .foregroundColor(.primary)
                         

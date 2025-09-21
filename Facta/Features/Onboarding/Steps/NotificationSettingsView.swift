@@ -77,8 +77,8 @@ struct NotificationSettingsView: View {
                         Spacer()
                         
                         Toggle("", isOn: viewStore.binding(
-                            get: \.notificationsEnabled,
-                            send: OnboardingAction.notificationPermissionResponse
+                            get: \.quizReminderEnabled,
+                            send: OnboardingAction.toggleQuizReminder
                         ))
                         .toggleStyle(SwitchToggleStyle(tint: .primary))
                     }

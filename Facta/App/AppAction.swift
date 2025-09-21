@@ -17,6 +17,7 @@ enum OnboardingAction {
     case getStartedTapped
     case notificationPermissionResponse(Bool)
     case toggleDailyFact(Bool)
+    case toggleQuizReminder(Bool)
     case finish
 }
 
@@ -48,7 +49,6 @@ enum FavoritesAction {
     case setCategory(String)
     case setViewMode(FavoritesViewMode)
     case remove(String)
-    case share(Fact)
 }
 
 enum ProfileAction {

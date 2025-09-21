@@ -16,6 +16,7 @@ struct OnboardingState: Equatable {
     var currentStep: Int = 0
     var notificationsEnabled: Bool = false
     var dailyFactEnabled: Bool = true
+    var quizReminderEnabled: Bool = false
     var isComplete: Bool = false
 }
 

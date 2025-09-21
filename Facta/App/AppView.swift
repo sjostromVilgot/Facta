@@ -24,7 +24,7 @@ struct MainTabView: View {
     let store: StoreOf<AppReducer>
 
     var body: some View {
-        WithViewStore(store, observe: \.profile.settings.theme) { viewStore in
+        WithViewStore(store, observe: \.profile.settings) { settingsViewStore in
             TabView {
                 HomeView(
                     store: store.scope(
@@ -34,7 +34,7 @@ struct MainTabView: View {
                 )
                 .tabItem {
                     Image(systemName: "house.fill")
-                    Text("Hem")
+                    Text(NSLocalizedString("Hem", comment: "Home tab"))
                 }
 
                 QuizView(
@@ -45,7 +45,7 @@ struct MainTabView: View {
                 )
                 .tabItem {
                     Image(systemName: "questionmark.circle.fill")
-                    Text("Quiz")
+                    Text(NSLocalizedString("Quiz", comment: "Quiz tab"))
                 }
 
                 FavoritesView(
@@ -56,7 +56,7 @@ struct MainTabView: View {
                 )
                 .tabItem {
                     Image(systemName: "heart.fill")
-                    Text("Favoriter")
+                    Text(NSLocalizedString("Favoriter", comment: "Favorites tab"))
                 }
 
                 ProfileView(
@@ -67,10 +67,11 @@ struct MainTabView: View {
                 )
                 .tabItem {
                     Image(systemName: "person.fill")
-                    Text("Profil")
+                    Text(NSLocalizedString("Profil", comment: "Profile tab"))
                 }
             }
-            .preferredColorScheme(themeColorScheme(viewStore.state))
+            .preferredColorScheme(themeColorScheme(settingsViewStore.state.theme))
+            .environment(\.locale, .init(identifier: settingsViewStore.state.language))
         }
     }
     

@@ -4,6 +4,8 @@ import ComposableArchitecture
 struct FavoritesView: View {
     let store: StoreOf<FavoritesReducer>
     
+    @State private var factToShare: Fact? = nil
+    
     private let categories = ["Alla", "Djur", "Rymden", "Mat", "Historia", "Vetenskap", "Naturhistoria", "Botanik", "Fysik", "Matvetenskap"]
     
     var body: some View {
@@ -148,7 +150,7 @@ struct FavoritesView: View {
                                 FavoriteCardView(fact: fact, isListMode: false)
                                     .contextMenu {
                                         Button("Dela") {
-                                            viewStore.send(.share(fact))
+                                            factToShare = fact
                                         }
                                         
                                         Button("Ta bort från favoriter") {
@@ -164,7 +166,7 @@ struct FavoritesView: View {
                                 FavoriteCardView(fact: fact, isListMode: true)
                                     .contextMenu {
                                         Button("Dela") {
-                                            viewStore.send(.share(fact))
+                                            factToShare = fact
                                         }
                                         
                                         Button("Ta bort från favoriter") {
@@ -221,6 +223,9 @@ struct FavoritesView: View {
             }
             .onAppear {
                 viewStore.send(.reload)
+            }
+            .sheet(item: $factToShare) { fact in
+                ActivityView(activityItems: ["\(fact.title)\n\n\(fact.content)\n\nLadda ner Facta för mer fantastiska fakta! 📱"])
             }
         }
     }
