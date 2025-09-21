@@ -107,6 +107,15 @@ struct FriendsState: Equatable {
     var pendingRequests: [Friend] = []
     var sentRequests: [Friend] = []
     var isLoading = false
+    
+    // Missing properties that are referenced in reducer
+    var showingAddFriend = false
+    var newFriendName = ""
+    var isFindingOpponent = false
+    var currentMatch: Match?
+    var matchResult: MatchResult?
+    var showingMatchResult = false
+    var pendingChallenges: [UUID] = []
 }
 
 struct ChallengesState: Equatable {

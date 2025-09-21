@@ -14,7 +14,7 @@ enum AppAction {
 
 // MARK: - Feature Actions
 
-enum OnboardingAction {
+enum OnboardingAction: Equatable {
     case nextStep
     case getStartedTapped
     case notificationPermissionResponse(Bool)
@@ -23,8 +23,9 @@ enum OnboardingAction {
     case finish
 }
 
-enum HomeAction {
+enum HomeAction: Equatable {
     case onAppear
+    case load
     case dailyLoaded(Fact)
     case discoveryLoaded([Fact])
     case save(Fact)
@@ -34,7 +35,7 @@ enum HomeAction {
     case markRead(Fact)
 }
 
-enum QuizAction {
+enum QuizAction: Equatable {
     case start(QuizMode)
     case questionsLoaded([QuizQuestion])
     case tick
@@ -45,18 +46,20 @@ enum QuizAction {
     case nextPlayer
     case showHistory
     case backToOverview
+    case result(QuizResult)
     case challengeCompleted(QuizMode, QuizResult)
 }
 
-enum FavoritesAction {
+enum FavoritesAction: Equatable {
+    case load
     case reload
     case setQuery(String)
     case setCategory(String)
     case setViewMode(FavoritesViewMode)
-    case remove(String)
+    case remove(Fact)
 }
 
-enum ProfileAction {
+enum ProfileAction: Equatable {
     case load
     case toggleDailyFact(Bool)
     case toggleQuizReminder(Bool)
@@ -69,9 +72,11 @@ enum ProfileAction {
     case acknowledgeChallengeComplete
 }
 
-enum FriendsAction {
+enum FriendsAction: Equatable {
     case load
     case addFriend(String)
+    case acceptRequest(UUID)
+    case declineRequest(UUID)
     case removeFriend(UUID)
     case challengeFriend(UUID)
     case setShowingAddFriend(Bool)
