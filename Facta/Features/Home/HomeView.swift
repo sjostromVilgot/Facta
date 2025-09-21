@@ -203,16 +203,3 @@ struct HomeView: View {
         }
     }
 }
-
-struct SecondaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(Typography.caption)
-            .padding(.horizontal, UI.Padding.medium)
-            .padding(.vertical, UI.Padding.small)
-            .background(Color.muted)
-            .cornerRadius(UI.corner)
-            .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
-            .animation(.easeInOut(duration: 0.1), value: configuration.isPressed)
-    }
-}
